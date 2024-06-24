@@ -6,7 +6,7 @@
 </a>
 
 <p align="center">
-The best way to quickly integrate <a href="https://getbootstrap.com/docs/5.1">Bootstrap 5</a>, 
+The best way to quickly integrate <a href="https://getbootstrap.com/docs/5.2">Bootstrap 5</a> <a href="https://getbootstrap.com/docs/4.0">Bootstrap 4</a> Components with <a href="https://angular.io/">Angular</a>
 <a href="https://getbootstrap.com/docs/4.0">Bootstrap 4</a> components with <a href="https://angular.io/">Angular</a>
 <br/>
 <br/>
@@ -117,7 +117,7 @@ This can be done with the css file directly in the index.html, or alternatively 
 - `Bootstrap 5`
 ```
 <!--- index.html -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 ```
 
 - `Bootstrap 4`
@@ -147,7 +147,7 @@ import { setTheme } from 'ngx-bootstrap/utils';
 @Component({...})
 export class AppComponent {
   constructor() {
-    setTheme('bs3'); // or 'bs4'
+    setTheme('bs5'); // or 'bs4'
     ...
   }
 }
@@ -171,19 +171,20 @@ The only two dependencies are [Angular](https://angular.io) and [Bootstrap](http
 Here is the version compatibility list:
 
 | ngx-bootstrap | Angular         | Bootstrap CSS  |
-|---------|-----------------|----------------|
-| 10.0.0  | 14.x.x - 15.x.x | 5.x.x or 4.x.x |
-| 9.0.0   | 14.x.x          | 5.x.x or 4.x.x or 3.x.x |
-| 8.0.0   | 12.x.x - 13.x.x | 5.x.x or 4.x.x or 3.x.x |
-| 7.1.0   | 11.x.x - 12.x.x | 5.x.x or 4.x.x or 3.x.x |
-| 7.0.0   | 11.x.x - 12.x.x | 3.x.x or 4.x.x |
-| 6.0.0   | 9.x.x - 10.x.x  | 3.x.x or 4.x.x |
-| 5.6.x   | 7.x.x - 9.1.0   | 3.x.x or 4.x.x |
+|---------------|-----------------|----------------|
+| 11.x.x        | 16.x.x          | 5.x.x or 4.x.x |
+| 10.x.x        | 15.x.x          | 5.x.x or 4.x.x |
+| 9.0.0         | 14.x.x          | 5.x.x or 4.x.x or 3.x.x |
+| 8.0.0         | 12.x.x - 13.x.x | 5.x.x or 4.x.x or 3.x.x |
+| 7.1.0         | 11.x.x - 12.x.x | 5.x.x or 4.x.x or 3.x.x |
+| 7.0.0         | 11.x.x - 12.x.x | 3.x.x or 4.x.x |
+| 6.0.0         | 9.x.x - 10.x.x  | 3.x.x or 4.x.x |
+| 5.6.x         | 7.x.x - 9.1.0   | 3.x.x or 4.x.x |
 | 5.0.0 - 5.6.0 | 7.x.x - 8.x.x   | 3.x.x or 4.x.x |
-| 4.x.x   | 6.x.x - 7.x.x   | 3.x.x or 4.x.x |
-| 3.x.x   | 6.x.x - 7.x.x   | 3.x.x or 4.x.x |
-| 2.x.x   | 2.x.x - 4.x.x   | 3.x.x or 4.x.x |
-| 1.x.x   | 2.x.x           | 3.x.x or 4.x.x |
+| 4.x.x         | 6.x.x - 7.x.x   | 3.x.x or 4.x.x |
+| 3.x.x         | 6.x.x - 7.x.x   | 3.x.x or 4.x.x |
+| 2.x.x         | 2.x.x - 4.x.x   | 3.x.x or 4.x.x |
+| 1.x.x         | 2.x.x           | 3.x.x or 4.x.x |
 
 
 ## Troubleshooting
@@ -205,10 +206,7 @@ Please read our [contribution guidelines](https://github.com/valor-software/ngx-
 
 ### Credits
 Crossbrowser testing sponsored by [Saucelabs](https://saucelabs.com/)
-[<img src="https://avatars2.githubusercontent.com/u/88837?s=200&v=4" alt="Saucelabs" width="31" height="31">](https://saucelabs.com/)
-
-End-to-end testing sponsored by [Cypress](https://www.cypress.io/)
-[<img src="https://raw.githubusercontent.com/cypress-io/cypress-icons/master/src/favicon/favicon.ico" alt="Cypress" width="31" height="31">](https://www.cypress.io/)
+[<img src="https://avatars2.githubusercontent.com/u/88837?s=200&v=4" alt="Saucelabs" width="31" height="31" align="middle">](https://saucelabs.com/)
 
 ### License
 

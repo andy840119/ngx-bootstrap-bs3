@@ -10,10 +10,13 @@
   "external": {
     "urls": [
       {
-        "url": "assets/css/bootstrap-3.3.7/css/bootstrap.min.css"
+        "url": "assets/css/bootstrap-5.2.3/css/bootstrap.min.css"
       },
       {
         "url": "assets/css/bootstrap-4.5.3/css/bootstrap.min.css"
+      },
+      {
+        "url": "assets/css/bootstrap-3.3.7/css/bootstrap.min.css"
       }
     ]
   },
