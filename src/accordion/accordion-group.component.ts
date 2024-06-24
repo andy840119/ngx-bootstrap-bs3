@@ -1,6 +1,7 @@
 import {
   Component, HostBinding, Inject, Input, OnDestroy, OnInit, Output, EventEmitter
 } from '@angular/core';
+import { isBs3 } from 'ngx-bootstrap/utils';
 import { AccordionComponent } from './accordion.component';
 
 /**
@@ -54,6 +55,10 @@ export class AccordionPanelComponent implements OnInit, OnDestroy {
         this.isOpenChange.emit(value);
       });
     }
+  }
+
+  get isBs3(): boolean {
+    return isBs3();
   }
 
   protected _isOpen = false;

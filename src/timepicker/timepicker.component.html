@@ -5,7 +5,6 @@
     <td>
       <a class="btn btn-link" [class.disabled]="!canIncrementHours || !isEditable"
          (click)="changeHours(hourStep)"
-         href="javascript:void(0);"
       ><span class="bs-chevron bs-chevron-up"></span></a>
     </td>
     <!-- divider -->
@@ -14,7 +13,6 @@
     <td *ngIf="showMinutes">
       <a class="btn btn-link" [class.disabled]="!canIncrementMinutes || !isEditable"
          (click)="changeMinutes(minuteStep)"
-         href="javascript:void(0);"
       ><span class="bs-chevron bs-chevron-up"></span></a>
     </td>
     <!-- divider -->
@@ -22,9 +20,7 @@
     <!-- increment seconds button -->
     <td *ngIf="showSeconds">
       <a class="btn btn-link" [class.disabled]="!canIncrementSeconds || !isEditable"
-         (click)="changeSeconds(secondsStep)"
-         href="javascript:void(0);"
-      >
+         (click)="changeSeconds(secondsStep)">
         <span class="bs-chevron bs-chevron-up"></span>
       </a>
     </td>
@@ -95,9 +91,7 @@
     <!-- decrement hours button-->
     <td>
       <a class="btn btn-link" [class.disabled]="!canDecrementHours || !isEditable"
-         (click)="changeHours(-hourStep)"
-         href="javascript:void(0);"
-      >
+         (click)="changeHours(-hourStep)">
         <span class="bs-chevron bs-chevron-down"></span>
       </a>
     </td>
@@ -106,9 +100,7 @@
     <!-- decrement minutes button-->
     <td *ngIf="showMinutes">
       <a class="btn btn-link" [class.disabled]="!canDecrementMinutes || !isEditable"
-         (click)="changeMinutes(-minuteStep)"
-         href="javascript:void(0);"
-      >
+         (click)="changeMinutes(-minuteStep)">
         <span class="bs-chevron bs-chevron-down"></span>
       </a>
     </td>
@@ -117,9 +109,7 @@
     <!-- decrement seconds button-->
     <td *ngIf="showSeconds">
       <a class="btn btn-link" [class.disabled]="!canDecrementSeconds || !isEditable"
-         (click)="changeSeconds(-secondsStep)"
-         href="javascript:void(0);"
-      >
+         (click)="changeSeconds(-secondsStep)">
         <span class="bs-chevron bs-chevron-down"></span>
       </a>
     </td>

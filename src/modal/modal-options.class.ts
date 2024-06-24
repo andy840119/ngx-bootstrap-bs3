@@ -76,8 +76,8 @@ export const CLASS_NAME: ClassName = {
   BACKDROP: 'modal-backdrop',
   OPEN: 'modal-open',
   FADE: 'fade',
-  IN: 'in',
-  SHOW: 'show'
+  IN: 'in', // bs3
+  SHOW: 'show' // bs4
 };
 
 export const SELECTOR: Selector = {

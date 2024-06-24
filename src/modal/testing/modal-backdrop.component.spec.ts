@@ -21,11 +21,11 @@ describe('ModalBackdropComponent tests', () => {
   it('isShown() tests', () => {
     component.isShown = true;
     fixture.detectChanges();
-    let modalClass = component.element.nativeElement.classList.contains('show');
+    let modalClass = component.element.nativeElement.classList.contains('in');
     expect(modalClass).toBeTruthy();
     component.isShown = false;
     fixture.detectChanges();
-    modalClass = component.element.nativeElement.classList.contains('show');
+    modalClass = component.element.nativeElement.classList.contains('in');
     expect(modalClass).toBeFalsy();
   });
 });

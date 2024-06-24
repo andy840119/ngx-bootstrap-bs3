@@ -8,6 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 
+import { isBs3 } from 'ngx-bootstrap/utils';
 import { ProgressbarType } from './progressbar-type.interface';
 
 @Component({
@@ -19,8 +20,9 @@ import { ProgressbarType } from './progressbar-type.interface';
     role: 'progressbar',
     'aria-valuemin': '0',
     '[class.progress-bar]': 'true',
-    '[class.progress-bar-animated]': 'animate',
+    '[class.progress-bar-animated]': '!isBs3 && animate',
     '[class.progress-bar-striped]': 'striped',
+    '[class.active]': 'isBs3 && animate',
     '[attr.aria-valuenow]': 'value',
     '[attr.aria-valuetext]': 'percent ? percent.toFixed(0) + "%" : ""',
     '[attr.aria-valuemax]': 'max',
@@ -45,6 +47,10 @@ export class BarComponent implements OnChanges {
   @Input() type?: ProgressbarType = 'info';
 
   percent = 100;
+
+  get isBs3(): boolean {
+    return isBs3();
+  }
 
   private _prevType?: string;
 

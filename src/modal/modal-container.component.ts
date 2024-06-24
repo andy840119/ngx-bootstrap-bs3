@@ -13,6 +13,7 @@ import {
   TRANSITION_DURATIONS
 } from './modal-options.class';
 import { BsModalService } from './bs-modal.service';
+import { isBs3 } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'modal-container',
@@ -66,7 +67,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
       this.isShown = true;
       this._renderer.addClass(
         this._element.nativeElement,
-        CLASS_NAME.SHOW
+        isBs3() ? CLASS_NAME.IN : CLASS_NAME.SHOW
       );
     }, this.isAnimated ? TRANSITION_DURATIONS.BACKDROP : 0);
     if (document && document.body) {
@@ -154,7 +155,7 @@ export class ModalContainerComponent implements OnInit, OnDestroy {
     this.isModalHiding = true;
     this._renderer.removeClass(
       this._element.nativeElement,
-      CLASS_NAME.SHOW
+      isBs3() ? CLASS_NAME.IN : CLASS_NAME.SHOW
     );
     setTimeout(() => {
       this.isShown = false;

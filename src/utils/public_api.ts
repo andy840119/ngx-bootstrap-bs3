@@ -1,5 +1,6 @@
 export * from './triggers';
 export {
+  isBs3,
   setTheme,
   getBsVer,
   currentBsVersion,
