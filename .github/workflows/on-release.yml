@@ -2,7 +2,7 @@ name: on-release
 on:
   push:
     tags:
-      - v*
+      - bs3*
 
 env:
   NX_BRANCH: ${{ github.event.number }}
@@ -104,7 +104,7 @@ jobs:
           branch: 'gh-pages'
           directory: 'gh-pages'
 
-  # publish to npm
+  # publish package to another branch
   npm_publish:
     runs-on: ubuntu-latest
     needs: build
@@ -118,7 +118,14 @@ jobs:
         with:
           path: dist
           key: dist-${{ github.run_id }}
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          package: "dist/ngx-bootstrap/package.json"
-          token: ${{ secrets.NPM_TOKEN }}
+
+      # Deploy to local repo
+      # see: https://github.com/marketplace/actions/push-git-subdirectory-as-branch
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: dist
+          FOLDER: dist/ngx-bootstrap
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}-release
