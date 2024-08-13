@@ -15,6 +15,7 @@ import { SIDEBAR_ROUTES } from '../../tokens/docs-sidebar-routes-token';
 import { initNestedRoutes } from './helpers/sidebar-helpers';
 import { Subscription } from "rxjs";
 
+const _bs3Css = 'assets/css/bootstrap-3.3.7/css/bootstrap.min.css';
 const _bs4Css = 'assets/css/bootstrap-4.5.3/css/bootstrap.min.css';
 const _bs5Css = 'assets/css/bootstrap-5.2.3/css/bootstrap.min.css';
 
@@ -32,11 +33,16 @@ export class SidebarComponent {
   @HostBinding('class.menuIsOpened') menuIsOpened = true;
 
   get bsCssFile(): string {
-    if (this.currentTheme === 'bs5') {
-      return _bs5Css;
+    switch (this.currentTheme) {
+      case 'bs3':
+        return _bs3Css;
+      case 'bs4':
+        return _bs4Css;
+      case 'bs5':
+        return _bs5Css;
+      default:
+        throw new Error('Unsupported theme');
     }
-
-    return _bs4Css;
   }
 
   get _bsVersions(): IBsVersion {
