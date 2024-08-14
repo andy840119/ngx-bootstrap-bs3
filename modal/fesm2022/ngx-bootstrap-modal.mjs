@@ -730,7 +730,9 @@ class BsModalService {
             .provide({ provide: BsModalRef, useValue: bsModalRef })
             .attach(ModalContainerComponent)
             .to('body');
-        bsModalRef.hide = () => this.hide(bsModalRef.id);
+        // use quick way to fix the animate issue for now
+        // see: https://github.com/valor-software/ngx-bootstrap/pull/6565
+        bsModalRef.hide = () => modalContainerRef.instance?.hide();
         bsModalRef.setClass = (newClass) => {
             if (modalContainerRef.instance) {
                 modalContainerRef.instance.config.class = newClass;
