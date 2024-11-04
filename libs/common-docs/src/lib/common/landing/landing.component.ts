@@ -29,8 +29,8 @@ export class LandingComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (typeof window !== 'undefined') {
-      this.http.get<any>('assets/json/current-version.json').subscribe(data => {
-        this.currentVersion = data.version;
+      this.http.get<{ version: string }>('assets/json/current-version.json').subscribe(({ version }) => {
+        this.currentVersion = version;
       });
     }
   }
@@ -45,6 +45,6 @@ export class LandingComponent implements AfterViewInit {
   }
 
   scrollToSection() {
-    this.router.navigate(['.', 'documentation' ], {fragment: 'getting-started'});
+    this.router.navigate(['.', 'documentation'], { fragment: 'getting-started' });
   }
 }
