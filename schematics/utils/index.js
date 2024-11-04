@@ -32,11 +32,10 @@ function getProjectTargetOptions(project, buildTarget) {
 }
 exports.getProjectTargetOptions = getProjectTargetOptions;
 function sortObjectByKeys(obj) {
-    return Object
-        .keys(obj)
+    return (Object.keys(obj)
         .sort()
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .reduce((result, key) => (result[key] = obj[key]) && result, {});
+        .reduce((result, key) => (result[key] = obj[key]) && result, {}));
 }
 function addPackageToPackageJson(host, pkg, version) {
     var _a;
@@ -57,14 +56,12 @@ function addPackageToPackageJson(host, pkg, version) {
 exports.addPackageToPackageJson = addPackageToPackageJson;
 function createTestApp(runner, appOptions = {}) {
     return __awaiter(this, void 0, void 0, function* () {
-        const workspaceTree = yield runner
-            .runExternalSchematicAsync('@schematics/angular', 'workspace', {
+        const workspaceTree = yield runner.runExternalSchematic('@schematics/angular', 'workspace', {
             name: 'workspace',
             version: '8.2.0',
-            newProjectRoot: 'projects',
-        }).toPromise();
-        return runner
-            .runExternalSchematicAsync('@schematics/angular', 'application', Object.assign(Object.assign({}, appOptions), { name: 'ngx-bootstrap' }), workspaceTree).toPromise();
+            newProjectRoot: 'projects'
+        });
+        return runner.runExternalSchematic('@schematics/angular', 'application', Object.assign(Object.assign({}, appOptions), { name: 'ngx-bootstrap' }), workspaceTree);
     });
 }
 exports.createTestApp = createTestApp;

@@ -2,7 +2,7 @@ import { ElementRef, EventEmitter, OnDestroy, OnInit, Renderer2, TemplateRef, Vi
 import { TooltipConfig } from './tooltip.config';
 import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
 import { PositioningService } from 'ngx-bootstrap/positioning';
-import { AvailbleBSPositions } from 'ngx-bootstrap/positioning';
+import { AvailableBSPositions } from 'ngx-bootstrap/positioning';
 import * as i0 from "@angular/core";
 export declare class TooltipDirective implements OnInit, OnDestroy {
     private _elementRef;
@@ -20,7 +20,7 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
     /**
      * Placement of a tooltip. Accepts: "top", "bottom", "left", "right"
      */
-    placement: AvailbleBSPositions;
+    placement: AvailableBSPositions;
     /**
      * Specifies events that should trigger. Supports a space separated list of
      * event names.
@@ -34,7 +34,7 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
      * Css class for tooltip container
      */
     containerClass: string;
-    boundariesElement?: ('viewport' | 'scrollParent' | 'window');
+    boundariesElement?: 'viewport' | 'scrollParent' | 'window';
     /**
      * Returns whether or not the tooltip is currently being shown
      */
@@ -59,7 +59,7 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
     /** @deprecated - please use `tooltip` instead */
     set htmlContent(value: string | TemplateRef<unknown>);
     /** @deprecated - please use `placement` instead */
-    set _placement(value: AvailbleBSPositions);
+    set _placement(value: AvailableBSPositions);
     /** @deprecated - please use `isOpen` instead */
     set _isOpen(value: boolean);
     get _isOpen(): boolean;

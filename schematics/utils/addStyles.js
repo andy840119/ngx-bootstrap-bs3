@@ -13,7 +13,7 @@ function addStyles(project, targetName, host, availableAssetPaths, projectName, 
         targetOptions = addEmptyStyles(targetOptions, extension, availableAssetPaths);
         return setUpdatedTargetOptions(host, project, targetOptions, targetName, projectName);
     }
-    const existingStyles = styles.map((s) => typeof s === 'string' ? s : s['input']);
+    const existingStyles = styles.map((s) => (typeof s === 'string' ? s : s['input']));
     const styleFilePath = (0, getVersions_1.getProjectStyleFile)(existingStyles, extension) || '';
     const styleFileExtension = normalizeExtension(path.extname(styleFilePath), extension, DEFAULT_STYLE_EXTENSION);
     const styleFilePatch = (_a = availableAssetPaths[styleFileExtension]) === null || _a === void 0 ? void 0 : _a[0];
@@ -32,8 +32,8 @@ function addStyles(project, targetName, host, availableAssetPaths, projectName, 
 exports.addStyles = addStyles;
 function addStylesPathsToTargetOptions(targetOptions, existingStyles, stylePatch) {
     var _a, _b;
-    if (!existingStyles.some(path => path === stylePatch)) {
-        (_b = (_a = targetOptions.styles) === null || _a === void 0 ? void 0 : _a.unshift) === null || _b === void 0 ? void 0 : _b.call(_a, stylePatch);
+    if (!existingStyles.some((path) => path === stylePatch)) {
+        Array.isArray(targetOptions['styles']) && ((_b = (_a = targetOptions.styles) === null || _a === void 0 ? void 0 : _a.unshift) === null || _b === void 0 ? void 0 : _b.call(_a, stylePatch));
     }
     return targetOptions;
 }

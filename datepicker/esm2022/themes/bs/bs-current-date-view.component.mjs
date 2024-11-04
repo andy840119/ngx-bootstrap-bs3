@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import * as i0 from "@angular/core";
 export class BsCurrentDateViewComponent {
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsCurrentDateViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: BsCurrentDateViewComponent, selector: "bs-current-date", inputs: { title: "title" }, ngImport: i0, template: `<div class="current-timedate"><span>{{ title }}</span></div>`, isInline: true }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsCurrentDateViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsCurrentDateViewComponent, selector: "bs-current-date", inputs: { title: "title" }, ngImport: i0, template: `<div class="current-timedate"><span>{{ title }}</span></div>`, isInline: true }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsCurrentDateViewComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsCurrentDateViewComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-current-date',

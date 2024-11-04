@@ -61,10 +61,10 @@ export class ButtonCheckboxDirective {
     registerOnTouched(fn) {
         this.onTouched = fn;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: ButtonCheckboxDirective, deps: [], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.1.4", type: ButtonCheckboxDirective, selector: "[btnCheckbox]", inputs: { btnCheckboxTrue: "btnCheckboxTrue", btnCheckboxFalse: "btnCheckboxFalse" }, host: { listeners: { "click": "onClick()" }, properties: { "class.active": "this.state", "attr.aria-pressed": "this.state" } }, providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ButtonCheckboxDirective, deps: [], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: ButtonCheckboxDirective, selector: "[btnCheckbox]", inputs: { btnCheckboxTrue: "btnCheckboxTrue", btnCheckboxFalse: "btnCheckboxFalse" }, host: { listeners: { "click": "onClick()" }, properties: { "class.active": "this.state", "attr.aria-pressed": "this.state" } }, providers: [CHECKBOX_CONTROL_VALUE_ACCESSOR], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: ButtonCheckboxDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ButtonCheckboxDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[btnCheckbox]',

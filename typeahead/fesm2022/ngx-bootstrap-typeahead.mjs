@@ -4,13 +4,13 @@ import { isBs3, Utils } from 'ngx-bootstrap/utils';
 import * as i1 from 'ngx-bootstrap/positioning';
 import { PositioningService } from 'ngx-bootstrap/positioning';
 import { Subscription, isObservable, EMPTY, from } from 'rxjs';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { style, state, animate, transition, trigger } from '@angular/animations';
 import * as i2 from '@angular/common';
 import { CommonModule } from '@angular/common';
 import * as i3 from '@angular/forms';
 import * as i1$1 from 'ngx-bootstrap/component-loader';
 import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
-import { debounceTime, tap, switchMap, mergeMap, filter, toArray } from 'rxjs/operators';
+import { debounceTime, tap, switchMap, filter, toArray, mergeMap } from 'rxjs/operators';
 
 const latinMap = {
     'Á': 'A',
@@ -847,8 +847,8 @@ class TypeaheadOptions {
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class TypeaheadMatch {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(item, value = item, header = false) {
         this.item = item;
         this.value = value;
@@ -1228,10 +1228,10 @@ class TypeaheadContainerComponent {
         }
         this.ulElement.nativeElement.scrollTop = 0;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadContainerComponent, deps: [{ token: i1.PositioningService }, { token: i0.Renderer2 }, { token: i0.ElementRef }, { token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: TypeaheadContainerComponent, selector: "typeahead-container", outputs: { activeChangeEvent: "activeChange" }, host: { listeners: { "mouseleave": "focusLost()", "blur": "focusLost()" }, properties: { "class.dropdown-menu": "isBs4", "style.height": "isBs4 && needScrollbar ? guiHeight: 'auto'", "style.visibility": "'inherit'", "class.dropup": "dropup", "attr.role": "isBs4 ? 'listbox' : null " }, styleAttribute: "position: absolute;display: block;", classAttribute: "dropdown open bottom" }, viewQueries: [{ propertyName: "ulElement", first: true, predicate: ["ulElement"], descendants: true }, { propertyName: "liElements", predicate: ["liElements"], descendants: true }], ngImport: i0, template: "<!-- inject options list template -->\n<ng-template [ngTemplateOutlet]=\"optionsListTemplate || (isBs4 ? bs4Template : bs3Template)\"\n             [ngTemplateOutletContext]=\"{\n               matches: matches,\n               itemTemplate: itemTemplate || bsItemTemplate,\n               query: query,\n               $implicit: typeaheadTemplateMethods\n             }\">\n</ng-template>\n\n<!-- default options item template -->\n<ng-template #bsItemTemplate let-match=\"match\" let-query=\"query\">\n  <span [innerHtml]=\"highlight(match, query)\"></span>\n</ng-template>\n\n<!-- Bootstrap 3 options list template -->\n<ng-template #bs3Template>\n  <ul class=\"dropdown-menu\"\n      #ulElement\n      role=\"listbox\"\n      [style.overflow-y]=\"needScrollbar ? 'scroll': 'auto'\"\n      [style.height]=\"needScrollbar ? guiHeight: 'auto'\">\n    <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n      <li #liElements *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</li>\n      <li #liElements\n          *ngIf=\"!match.isHeader()\"\n          [id]=\"popupId + '-' + i\"\n          role=\"option\"\n          [@typeaheadAnimation]=\"animationState\"\n          [class.active]=\"isActive(match)\"\n          (mouseenter)=\"selectActive(match)\">\n\n        <a href=\"#\" (click)=\"selectMatch(match, $event)\" tabindex=\"-1\">\n          <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                       [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n          </ng-template>\n        </a>\n      </li>\n    </ng-template>\n  </ul>\n</ng-template>\n\n<!-- Bootstrap 4 options list template -->\n<ng-template #bs4Template>\n  <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n    <h6 *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</h6>\n    <ng-template [ngIf]=\"!match.isHeader()\">\n      <button #liElements\n              [id]=\"popupId + '-' + i\"\n              role=\"option\"\n              [@typeaheadAnimation]=\"animationState\"\n              class=\"dropdown-item\"\n              (click)=\"selectMatch(match, $event)\"\n              (mouseenter)=\"selectActive(match)\"\n              [class.active]=\"isActive(match)\">\n        <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                     [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n        </ng-template>\n      </button>\n    </ng-template>\n  </ng-template>\n</ng-template>\n", styles: [":host.dropdown{z-index:1000}:host.dropdown-menu,.dropdown-menu{overflow-y:auto;height:100px}\n"], dependencies: [{ kind: "directive", type: i2.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { kind: "directive", type: i2.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { kind: "directive", type: i2.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet", "ngTemplateOutletInjector"] }], animations: [typeaheadAnimation] }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadContainerComponent, deps: [{ token: i1.PositioningService }, { token: i0.Renderer2 }, { token: i0.ElementRef }, { token: i0.ChangeDetectorRef }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: TypeaheadContainerComponent, selector: "typeahead-container", outputs: { activeChangeEvent: "activeChange" }, host: { listeners: { "mouseleave": "focusLost()", "blur": "focusLost()" }, properties: { "class.dropdown-menu": "isBs4", "style.height": "isBs4 && needScrollbar ? guiHeight: 'auto'", "style.visibility": "'inherit'", "class.dropup": "dropup", "attr.role": "isBs4 ? 'listbox' : null " }, styleAttribute: "position: absolute;display: block;", classAttribute: "dropdown open bottom" }, viewQueries: [{ propertyName: "ulElement", first: true, predicate: ["ulElement"], descendants: true }, { propertyName: "liElements", predicate: ["liElements"], descendants: true }], ngImport: i0, template: "<!-- inject options list template -->\n<ng-template [ngTemplateOutlet]=\"optionsListTemplate || (isBs4 ? bs4Template : bs3Template)\"\n             [ngTemplateOutletContext]=\"{\n               matches: matches,\n               itemTemplate: itemTemplate || bsItemTemplate,\n               query: query,\n               $implicit: typeaheadTemplateMethods\n             }\">\n</ng-template>\n\n<!-- default options item template -->\n<ng-template #bsItemTemplate let-match=\"match\" let-query=\"query\">\n  <span [innerHtml]=\"highlight(match, query)\"></span>\n</ng-template>\n\n<!-- Bootstrap 3 options list template -->\n<ng-template #bs3Template>\n  <ul class=\"dropdown-menu\"\n      #ulElement\n      role=\"listbox\"\n      [style.overflow-y]=\"needScrollbar ? 'scroll': 'auto'\"\n      [style.height]=\"needScrollbar ? guiHeight: 'auto'\">\n    <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n      <li #liElements *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</li>\n      <li #liElements\n          *ngIf=\"!match.isHeader()\"\n          [id]=\"popupId + '-' + i\"\n          role=\"option\"\n          [@typeaheadAnimation]=\"animationState\"\n          [class.active]=\"isActive(match)\"\n          (mouseenter)=\"selectActive(match)\">\n\n        <a href=\"#\" (click)=\"selectMatch(match, $event)\" tabindex=\"-1\">\n          <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                       [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n          </ng-template>\n        </a>\n      </li>\n    </ng-template>\n  </ul>\n</ng-template>\n\n<!-- Bootstrap 4 options list template -->\n<ng-template #bs4Template>\n  <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n    <h6 *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</h6>\n    <ng-template [ngIf]=\"!match.isHeader()\">\n      <button #liElements\n              [id]=\"popupId + '-' + i\"\n              role=\"option\"\n              [@typeaheadAnimation]=\"animationState\"\n              class=\"dropdown-item\"\n              (click)=\"selectMatch(match, $event)\"\n              (mouseenter)=\"selectActive(match)\"\n              [class.active]=\"isActive(match)\">\n        <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                     [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n        </ng-template>\n      </button>\n    </ng-template>\n  </ng-template>\n</ng-template>\n", styles: [":host.dropdown{z-index:1000}:host.dropdown-menu,.dropdown-menu{overflow-y:auto;height:100px}\n"], dependencies: [{ kind: "directive", type: i2.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { kind: "directive", type: i2.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { kind: "directive", type: i2.NgTemplateOutlet, selector: "[ngTemplateOutlet]", inputs: ["ngTemplateOutletContext", "ngTemplateOutlet", "ngTemplateOutletInjector"] }], animations: [typeaheadAnimation] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadContainerComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadContainerComponent, decorators: [{
             type: Component,
             args: [{ selector: 'typeahead-container', host: {
                         class: 'dropdown open bottom',
@@ -1242,7 +1242,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImpor
                         style: 'position: absolute;display: block;',
                         '[attr.role]': `isBs4 ? 'listbox' : null `
                     }, animations: [typeaheadAnimation], template: "<!-- inject options list template -->\n<ng-template [ngTemplateOutlet]=\"optionsListTemplate || (isBs4 ? bs4Template : bs3Template)\"\n             [ngTemplateOutletContext]=\"{\n               matches: matches,\n               itemTemplate: itemTemplate || bsItemTemplate,\n               query: query,\n               $implicit: typeaheadTemplateMethods\n             }\">\n</ng-template>\n\n<!-- default options item template -->\n<ng-template #bsItemTemplate let-match=\"match\" let-query=\"query\">\n  <span [innerHtml]=\"highlight(match, query)\"></span>\n</ng-template>\n\n<!-- Bootstrap 3 options list template -->\n<ng-template #bs3Template>\n  <ul class=\"dropdown-menu\"\n      #ulElement\n      role=\"listbox\"\n      [style.overflow-y]=\"needScrollbar ? 'scroll': 'auto'\"\n      [style.height]=\"needScrollbar ? guiHeight: 'auto'\">\n    <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n      <li #liElements *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</li>\n      <li #liElements\n          *ngIf=\"!match.isHeader()\"\n          [id]=\"popupId + '-' + i\"\n          role=\"option\"\n          [@typeaheadAnimation]=\"animationState\"\n          [class.active]=\"isActive(match)\"\n          (mouseenter)=\"selectActive(match)\">\n\n        <a href=\"#\" (click)=\"selectMatch(match, $event)\" tabindex=\"-1\">\n          <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                       [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n          </ng-template>\n        </a>\n      </li>\n    </ng-template>\n  </ul>\n</ng-template>\n\n<!-- Bootstrap 4 options list template -->\n<ng-template #bs4Template>\n  <ng-template ngFor let-match let-i=\"index\" [ngForOf]=\"matches\">\n    <h6 *ngIf=\"match.isHeader()\" class=\"dropdown-header\">{{ match }}</h6>\n    <ng-template [ngIf]=\"!match.isHeader()\">\n      <button #liElements\n              [id]=\"popupId + '-' + i\"\n              role=\"option\"\n              [@typeaheadAnimation]=\"animationState\"\n              class=\"dropdown-item\"\n              (click)=\"selectMatch(match, $event)\"\n              (mouseenter)=\"selectActive(match)\"\n              [class.active]=\"isActive(match)\">\n        <ng-template [ngTemplateOutlet]=\"itemTemplate || bsItemTemplate\"\n                     [ngTemplateOutletContext]=\"{item: match.item, index: i, match: match, query: query}\">\n        </ng-template>\n      </button>\n    </ng-template>\n  </ng-template>\n</ng-template>\n", styles: [":host.dropdown{z-index:1000}:host.dropdown-menu,.dropdown-menu{overflow-y:auto;height:100px}\n"] }]
-        }], ctorParameters: function () { return [{ type: i1.PositioningService }, { type: i0.Renderer2 }, { type: i0.ElementRef }, { type: i0.ChangeDetectorRef }]; }, propDecorators: { activeChangeEvent: [{
+        }], ctorParameters: () => [{ type: i1.PositioningService }, { type: i0.Renderer2 }, { type: i0.ElementRef }, { type: i0.ChangeDetectorRef }], propDecorators: { activeChangeEvent: [{
                 type: Output,
                 args: ['activeChange']
             }], ulElement: [{
@@ -1283,10 +1283,10 @@ class TypeaheadConfig {
          */
         this.selectItemOnBlur = false;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadConfig, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadConfig, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadConfig, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadConfig, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }] });
@@ -1370,7 +1370,8 @@ class TypeaheadDirective {
         this._matches = [];
         this._subscriptions = [];
         this._outsideClickListener = () => void 0;
-        this._typeahead = cis.createLoader(element, viewContainerRef, renderer)
+        this._typeahead = cis
+            .createLoader(element, viewContainerRef, renderer)
             .provide({ provide: TypeaheadConfig, useValue: config });
         Object.assign(this, {
             typeaheadHideResultsOnBlur: config.hideResultsOnBlur,
@@ -1388,10 +1389,9 @@ class TypeaheadDirective {
     }
     ngOnInit() {
         this.typeaheadOptionsLimit = this.typeaheadOptionsLimit || 20;
-        this.typeaheadMinLength =
-            this.typeaheadMinLength === void 0 ? 1 : this.typeaheadMinLength;
+        this.typeaheadMinLength = this.typeaheadMinLength === void 0 ? 1 : this.typeaheadMinLength;
         // async should be false in case of array
-        if (this.typeaheadAsync === undefined && !(isObservable(this.typeahead))) {
+        if (this.typeaheadAsync === undefined && !isObservable(this.typeahead)) {
             this.typeaheadAsync = false;
         }
         if (isObservable(this.typeahead)) {
@@ -1500,7 +1500,10 @@ class TypeaheadDirective {
         let valueStr;
         if (this.typeaheadMultipleSearch && this._allEnteredValue) {
             const tokens = this._allEnteredValue.split(new RegExp(`([${this.typeaheadMultipleSearchDelimiters}]+)`));
-            this._allEnteredValue = tokens.slice(0, tokens.length - 1).concat(match.value).join('');
+            this._allEnteredValue = tokens
+                .slice(0, tokens.length - 1)
+                .concat(match.value)
+                .join('');
             valueStr = this._allEnteredValue;
         }
         else {
@@ -1522,8 +1525,7 @@ class TypeaheadDirective {
             animation: false,
             dropup: this.dropup
         });
-        this._outsideClickListener = this.renderer
-            .listen('document', 'click', (event) => {
+        this._outsideClickListener = this.renderer.listen('document', 'click', (event) => {
             if (this.typeaheadMinLength === 0 && this.element.nativeElement.contains(event.target)) {
                 return;
             }
@@ -1538,9 +1540,7 @@ class TypeaheadDirective {
         this._container = this._typeahead.instance;
         this._container.parent = this;
         // This improves the speed as it won't have to be done for each list item
-        const normalizedQuery = (this.typeaheadLatinize
-            ? latinize(this.ngControl.control.value)
-            : this.ngControl.control.value)
+        const normalizedQuery = (this.typeaheadLatinize ? latinize(this.ngControl.control.value) : this.ngControl.control.value)
             .toString()
             .toLowerCase();
         this._container.query = this.tokenizeQuery(normalizedQuery);
@@ -1576,7 +1576,7 @@ class TypeaheadDirective {
     }
     asyncActions() {
         this._subscriptions.push(this.keyUpEventEmitter
-            .pipe(debounceTime(this.typeaheadWaitMs), tap(value => this._allEnteredValue = value), switchMap(() => {
+            .pipe(debounceTime(this.typeaheadWaitMs), tap((value) => (this._allEnteredValue = value)), switchMap(() => {
             if (!this.typeahead) {
                 return EMPTY;
             }
@@ -1595,8 +1595,7 @@ class TypeaheadDirective {
                 return EMPTY;
             }
             const typeahead = isObservable(this.typeahead) ? this.typeahead : from(this.typeahead);
-            return typeahead
-                .pipe(filter((option) => {
+            return typeahead.pipe(filter((option) => {
                 return !!option && this.testMatch(this.normalizeOption(option), normalizedQuery);
             }), toArray());
         }))
@@ -1606,9 +1605,7 @@ class TypeaheadDirective {
     }
     normalizeOption(option) {
         const optionValue = getValueFromObject(option, this.typeaheadOptionField);
-        const normalizedOption = this.typeaheadLatinize
-            ? latinize(optionValue)
-            : optionValue;
+        const normalizedOption = this.typeaheadLatinize ? latinize(optionValue) : optionValue;
         return normalizedOption.toLowerCase();
     }
     tokenizeQuery(currentQuery) {
@@ -1630,9 +1627,7 @@ class TypeaheadDirective {
     }
     normalizeQuery(value) {
         // If singleWords, break model here to not be doing extra work on each iteration
-        let normalizedQuery = (this.typeaheadLatinize
-            ? latinize(value)
-            : value)
+        let normalizedQuery = (this.typeaheadLatinize ? latinize(value) : value)
             .toString()
             .toLowerCase();
         normalizedQuery = this.tokenizeQuery(normalizedQuery);
@@ -1664,9 +1659,7 @@ class TypeaheadDirective {
         }
         if (this._container && this.ngControl.control) {
             // fix: remove usage of ngControl internals
-            const _controlValue = (this.typeaheadLatinize
-                ? latinize(this.ngControl.control.value)
-                : this.ngControl.control.value) || '';
+            const _controlValue = (this.typeaheadLatinize ? latinize(this.ngControl.control.value) : this.ngControl.control.value) || '';
             // This improves the speed as it won't have to be done for each list item
             const normalizedQuery = _controlValue.toString().toLowerCase();
             this._container.query = this.tokenizeQuery(normalizedQuery);
@@ -1705,14 +1698,14 @@ class TypeaheadDirective {
         if (!options.length) {
             return options;
         }
-        if (this.typeaheadOrderBy !== null
-            && this.typeaheadOrderBy !== undefined
-            && typeof this.typeaheadOrderBy === 'object'
-            && Object.keys(this.typeaheadOrderBy).length === 0) {
+        if (this.typeaheadOrderBy !== null &&
+            this.typeaheadOrderBy !== undefined &&
+            typeof this.typeaheadOrderBy === 'object' &&
+            Object.keys(this.typeaheadOrderBy).length === 0) {
             console.error('Field and direction properties for typeaheadOrderBy have to be set according to documentation!');
             return options;
         }
-        const { field, direction } = (this.typeaheadOrderBy || {});
+        const { field, direction } = this.typeaheadOrderBy || {};
         if (!direction || !(direction === 'asc' || direction === 'desc')) {
             console.error('typeaheadOrderBy direction has to equal "asc" or "desc". Please follow the documentation.');
             return options;
@@ -1740,8 +1733,9 @@ class TypeaheadDirective {
         return this._matches.length > 0;
     }
     checkDelimitersConflict() {
-        if (this.typeaheadMultipleSearch && this.typeaheadSingleWords
-            && (this.haveCommonCharacters(`${this.typeaheadPhraseDelimiters}${this.typeaheadWordDelimiters}`, this.typeaheadMultipleSearchDelimiters))) {
+        if (this.typeaheadMultipleSearch &&
+            this.typeaheadSingleWords &&
+            this.haveCommonCharacters(`${this.typeaheadPhraseDelimiters}${this.typeaheadWordDelimiters}`, this.typeaheadMultipleSearchDelimiters)) {
             throw new Error(`Delimiters used in typeaheadMultipleSearchDelimiters must be different
           from delimiters used in typeaheadWordDelimiters (current value: ${this.typeaheadWordDelimiters}) and
           typeaheadPhraseDelimiters (current value: ${this.typeaheadPhraseDelimiters}).
@@ -1756,10 +1750,10 @@ class TypeaheadDirective {
         }
         return false;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadDirective, deps: [{ token: i1$1.ComponentLoaderFactory }, { token: TypeaheadConfig }, { token: i0.ChangeDetectorRef }, { token: i0.ElementRef }, { token: i3.NgControl }, { token: i0.Renderer2 }, { token: i0.ViewContainerRef }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.1.4", type: TypeaheadDirective, selector: "[typeahead]", inputs: { typeahead: "typeahead", typeaheadMinLength: "typeaheadMinLength", adaptivePosition: "adaptivePosition", isAnimated: "isAnimated", typeaheadWaitMs: "typeaheadWaitMs", typeaheadOptionsLimit: "typeaheadOptionsLimit", typeaheadOptionField: "typeaheadOptionField", typeaheadGroupField: "typeaheadGroupField", typeaheadOrderBy: "typeaheadOrderBy", typeaheadAsync: "typeaheadAsync", typeaheadLatinize: "typeaheadLatinize", typeaheadSingleWords: "typeaheadSingleWords", typeaheadWordDelimiters: "typeaheadWordDelimiters", typeaheadMultipleSearch: "typeaheadMultipleSearch", typeaheadMultipleSearchDelimiters: "typeaheadMultipleSearchDelimiters", typeaheadPhraseDelimiters: "typeaheadPhraseDelimiters", typeaheadItemTemplate: "typeaheadItemTemplate", optionsListTemplate: "optionsListTemplate", typeaheadScrollable: "typeaheadScrollable", typeaheadOptionsInScrollableView: "typeaheadOptionsInScrollableView", typeaheadHideResultsOnBlur: "typeaheadHideResultsOnBlur", typeaheadSelectFirstItem: "typeaheadSelectFirstItem", typeaheadIsFirstItemActive: "typeaheadIsFirstItemActive", container: "container", dropup: "dropup" }, outputs: { typeaheadLoading: "typeaheadLoading", typeaheadNoResults: "typeaheadNoResults", typeaheadOnSelect: "typeaheadOnSelect", typeaheadOnPreview: "typeaheadOnPreview", typeaheadOnBlur: "typeaheadOnBlur" }, host: { listeners: { "input": "onInput($event)", "keyup": "onChange($event)", "click": "onFocus()", "focus": "onFocus()", "blur": "onBlur()", "keydown": "onKeydown($event)" }, properties: { "attr.aria-activedescendant": "activeDescendant", "attr.aria-owns": "isOpen ? this._container.popupId : null", "attr.aria-expanded": "isOpen", "attr.aria-autocomplete": "list" } }, exportAs: ["bs-typeahead"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadDirective, deps: [{ token: i1$1.ComponentLoaderFactory }, { token: TypeaheadConfig }, { token: i0.ChangeDetectorRef }, { token: i0.ElementRef }, { token: i3.NgControl }, { token: i0.Renderer2 }, { token: i0.ViewContainerRef }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: TypeaheadDirective, selector: "[typeahead]", inputs: { typeahead: "typeahead", typeaheadMinLength: "typeaheadMinLength", adaptivePosition: "adaptivePosition", isAnimated: "isAnimated", typeaheadWaitMs: "typeaheadWaitMs", typeaheadOptionsLimit: "typeaheadOptionsLimit", typeaheadOptionField: "typeaheadOptionField", typeaheadGroupField: "typeaheadGroupField", typeaheadOrderBy: "typeaheadOrderBy", typeaheadAsync: "typeaheadAsync", typeaheadLatinize: "typeaheadLatinize", typeaheadSingleWords: "typeaheadSingleWords", typeaheadWordDelimiters: "typeaheadWordDelimiters", typeaheadMultipleSearch: "typeaheadMultipleSearch", typeaheadMultipleSearchDelimiters: "typeaheadMultipleSearchDelimiters", typeaheadPhraseDelimiters: "typeaheadPhraseDelimiters", typeaheadItemTemplate: "typeaheadItemTemplate", optionsListTemplate: "optionsListTemplate", typeaheadScrollable: "typeaheadScrollable", typeaheadOptionsInScrollableView: "typeaheadOptionsInScrollableView", typeaheadHideResultsOnBlur: "typeaheadHideResultsOnBlur", typeaheadSelectFirstItem: "typeaheadSelectFirstItem", typeaheadIsFirstItemActive: "typeaheadIsFirstItemActive", container: "container", dropup: "dropup" }, outputs: { typeaheadLoading: "typeaheadLoading", typeaheadNoResults: "typeaheadNoResults", typeaheadOnSelect: "typeaheadOnSelect", typeaheadOnPreview: "typeaheadOnPreview", typeaheadOnBlur: "typeaheadOnBlur" }, host: { listeners: { "input": "onInput($event)", "keyup": "onChange($event)", "click": "onFocus()", "focus": "onFocus()", "blur": "onBlur()", "keydown": "onKeydown($event)" }, properties: { "attr.aria-activedescendant": "activeDescendant", "attr.aria-owns": "isOpen ? this._container.popupId : null", "attr.aria-expanded": "isOpen", "attr.aria-autocomplete": "list" } }, exportAs: ["bs-typeahead"], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[typeahead]',
@@ -1772,7 +1766,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImpor
                         '[attr.aria-autocomplete]': 'list'
                     }
                 }]
-        }], ctorParameters: function () { return [{ type: i1$1.ComponentLoaderFactory }, { type: TypeaheadConfig }, { type: i0.ChangeDetectorRef }, { type: i0.ElementRef }, { type: i3.NgControl }, { type: i0.Renderer2 }, { type: i0.ViewContainerRef }]; }, propDecorators: { typeahead: [{
+        }], ctorParameters: () => [{ type: i1$1.ComponentLoaderFactory }, { type: TypeaheadConfig }, { type: i0.ChangeDetectorRef }, { type: i0.ElementRef }, { type: i3.NgControl }, { type: i0.Renderer2 }, { type: i0.ViewContainerRef }], propDecorators: { typeahead: [{
                 type: Input
             }], typeaheadMinLength: [{
                 type: Input
@@ -1861,11 +1855,11 @@ class TypeaheadModule {
             providers: [ComponentLoaderFactory, PositioningService]
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadModule, declarations: [TypeaheadContainerComponent, TypeaheadDirective], imports: [CommonModule], exports: [TypeaheadContainerComponent, TypeaheadDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadModule, imports: [CommonModule] }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadModule, declarations: [TypeaheadContainerComponent, TypeaheadDirective], imports: [CommonModule], exports: [TypeaheadContainerComponent, TypeaheadDirective] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadModule, imports: [CommonModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TypeaheadModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TypeaheadModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [CommonModule],

@@ -17,8 +17,8 @@ export class BsDatepickerNavigationViewComponent {
         }
         this.onViewMode.emit(viewMode);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsDatepickerNavigationViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: BsDatepickerNavigationViewComponent, selector: "bs-datepicker-navigation-view", inputs: { calendar: "calendar", isDisabled: "isDisabled" }, outputs: { onNavigate: "onNavigate", onViewMode: "onViewMode" }, ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDatepickerNavigationViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsDatepickerNavigationViewComponent, selector: "bs-datepicker-navigation-view", inputs: { calendar: "calendar", isDisabled: "isDisabled" }, outputs: { onNavigate: "onNavigate", onViewMode: "onViewMode" }, ngImport: i0, template: `
     <button class="previous"
             [disabled]="calendar.disableLeftArrow"
             [style.visibility]="calendar.hideLeftArrow ? 'hidden' : 'visible'"
@@ -62,7 +62,7 @@ export class BsDatepickerNavigationViewComponent {
     </button>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsDatepickerNavigationViewComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDatepickerNavigationViewComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-datepicker-navigation-view',

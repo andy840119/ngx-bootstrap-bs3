@@ -1,6 +1,6 @@
 {
   "name": "ngx-bootstrap/progressbar",
-  "version": "11.0.2",
+  "version": "12.0.0",
   "author": "Dmitriy Shekhovtsov <valorkin@gmail.com>",
   "license": "MIT",
   "module": "fesm2022/ngx-bootstrap-progressbar.mjs",
@@ -19,10 +19,5 @@
   "sideEffects": false,
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "peerDependencies": {
-    "@angular/core": "16.1.4",
-    "ngx-bootstrap/utils": "11.0.2",
-    "@angular/common": "16.1.4"
   }
 }

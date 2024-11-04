@@ -4,8 +4,8 @@ import * as i1 from "@angular/common";
 import * as i2 from "./bs-current-date-view.component";
 import * as i3 from "./bs-timepicker-view.component";
 export class BsCalendarLayoutComponent {
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsCalendarLayoutComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: BsCalendarLayoutComponent, selector: "bs-calendar-layout", ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsCalendarLayoutComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsCalendarLayoutComponent, selector: "bs-calendar-layout", ngImport: i0, template: `
     <!-- current date, will be added in nearest releases -->
     <bs-current-date title="hey there" *ngIf="false"></bs-current-date>
 
@@ -22,7 +22,7 @@ export class BsCalendarLayoutComponent {
     <bs-timepicker *ngIf="false"></bs-timepicker>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgIf, selector: "[ngIf]", inputs: ["ngIf", "ngIfThen", "ngIfElse"] }, { kind: "component", type: i2.BsCurrentDateViewComponent, selector: "bs-current-date", inputs: ["title"] }, { kind: "component", type: i3.BsTimepickerViewComponent, selector: "bs-timepicker" }] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsCalendarLayoutComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsCalendarLayoutComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-calendar-layout',

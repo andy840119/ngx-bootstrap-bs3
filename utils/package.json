@@ -1,6 +1,6 @@
 {
   "name": "ngx-bootstrap/utils",
-  "version": "11.0.2",
+  "version": "12.0.0",
   "author": "Dmitriy Shekhovtsov <valorkin@gmail.com>",
   "license": "MIT",
   "module": "fesm2022/ngx-bootstrap-utils.mjs",
@@ -19,8 +19,5 @@
   "sideEffects": false,
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "peerDependencies": {
-    "@angular/core": "16.1.4"
   }
 }

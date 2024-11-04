@@ -8,8 +8,8 @@
 import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import * as ts from 'typescript';
-import { JsonArray, JsonObject, workspaces } from '@angular-devkit/core';
-export declare function getProjectTargetOptions(project: workspaces.ProjectDefinition, buildTarget: string): Record<string, string | number | boolean | JsonArray | JsonObject>;
+import { workspaces } from '@angular-devkit/core';
+export declare function getProjectTargetOptions(project: workspaces.ProjectDefinition, buildTarget: string): workspaces.TargetDefinition['options'];
 export declare function addPackageToPackageJson(host: Tree, pkg: string, version: string): Tree;
 export declare function createTestApp(runner: SchematicTestRunner, appOptions?: {}): Promise<UnitTestTree>;
 export declare function removePackageJsonDependency(tree: Tree, dependencyName: string): void;

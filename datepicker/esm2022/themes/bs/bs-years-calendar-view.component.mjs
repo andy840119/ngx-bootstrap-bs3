@@ -25,8 +25,8 @@ export class BsYearsCalendarViewComponent {
     changeViewMode(event) {
         this.onViewMode.emit(event);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsYearsCalendarViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: BsYearsCalendarViewComponent, selector: "bs-years-calendar-view", inputs: { calendar: "calendar" }, outputs: { onNavigate: "onNavigate", onViewMode: "onViewMode", onSelect: "onSelect", onHover: "onHover" }, ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsYearsCalendarViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsYearsCalendarViewComponent, selector: "bs-years-calendar-view", inputs: { calendar: "calendar" }, outputs: { onNavigate: "onNavigate", onViewMode: "onViewMode", onSelect: "onSelect", onHover: "onHover" }, ngImport: i0, template: `
     <bs-calendar-layout>
       <bs-datepicker-navigation-view
         [calendar]="calendar"
@@ -51,7 +51,7 @@ export class BsYearsCalendarViewComponent {
     </bs-calendar-layout>
   `, isInline: true, dependencies: [{ kind: "directive", type: i1.NgForOf, selector: "[ngFor][ngForOf]", inputs: ["ngForOf", "ngForTrackBy", "ngForTemplate"] }, { kind: "component", type: i2.BsCalendarLayoutComponent, selector: "bs-calendar-layout" }, { kind: "component", type: i3.BsDatepickerNavigationViewComponent, selector: "bs-datepicker-navigation-view", inputs: ["calendar", "isDisabled"], outputs: ["onNavigate", "onViewMode"] }] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsYearsCalendarViewComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsYearsCalendarViewComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-years-calendar-view',

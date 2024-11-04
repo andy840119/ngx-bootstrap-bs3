@@ -15,19 +15,18 @@ export declare class BsDatepickerInputDirective implements ControlValueAccessor,
     private _value?;
     private _subs;
     constructor(_picker: BsDatepickerDirective, _localeService: BsLocaleService, _renderer: Renderer2, _elRef: ElementRef, changeDetection: ChangeDetectorRef);
+    onChange(event: Event): void;
+    onBlur(): void;
+    hide(): void;
     ngOnInit(): void;
     ngOnDestroy(): void;
-    onKeydownEvent(event: KeyboardEvent): void;
     _setInputValue(value?: Date): void;
-    onChange(event: Event): void;
     validate(c: AbstractControl): ValidationErrors | null;
     registerOnValidatorChange(fn: () => void): void;
     writeValue(value: Date | string): void;
     setDisabledState(isDisabled: boolean): void;
     registerOnChange(fn: () => void): void;
     registerOnTouched(fn: () => void): void;
-    onBlur(): void;
-    hide(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerInputDirective, [{ host: true; }, null, null, null, null]>;
     static ɵdir: i0.ɵɵDirectiveDeclaration<BsDatepickerInputDirective, "input[bsDatepicker]", never, {}, {}, never, never, false, never>;
 }

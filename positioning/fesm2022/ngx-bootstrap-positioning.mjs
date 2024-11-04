@@ -2,7 +2,7 @@ import { getBsVer } from 'ngx-bootstrap/utils';
 import * as i0 from '@angular/core';
 import { PLATFORM_ID, Injectable, Inject, ElementRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Subject, merge, fromEvent, of, animationFrameScheduler } from 'rxjs';
+import { Subject, fromEvent, animationFrameScheduler, of, merge } from 'rxjs';
 
 var MapPlacementInToRL;
 (function (MapPlacementInToRL) {
@@ -183,19 +183,17 @@ function getBordersSize(styles, axis) {
         parseFloat(styles[`border${sideB}Width`]));
 }
 
-function getSize(axis, body, html, computedStyle) {
+function getSize(axis, body, html) {
     const _body = body;
     const _html = html;
-    const _computedStyle = computedStyle;
     return Math.max(_body[`offset${axis}`], _body[`scroll${axis}`], _html[`client${axis}`], _html[`offset${axis}`], _html[`scroll${axis}`], 0);
 }
 function getWindowSizes(document) {
     const body = document.body;
     const html = document.documentElement;
-    const computedStyle = void 0;
     return {
-        height: getSize('Height', body, html, computedStyle),
-        width: getSize('Width', body, html, computedStyle)
+        height: getSize('Height', body, html),
+        width: getSize('Width', body, html)
     };
 }
 
@@ -213,7 +211,6 @@ function getClientRect(offsets) {
 function isNumeric(n) {
     return n !== '' && !isNaN(parseFloat(n)) && isFinite(Number(n));
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isNumber(value) {
     return typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]';
 }
@@ -269,49 +266,10 @@ function getBoundingClientRect(element) {
     return getClientRect(result);
 }
 
-/**
- * Returns the parentNode or the host of the element
- */
-// todo: valorkin fix
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getParentNode(element) {
-    if (element.nodeName === 'HTML') {
-        return element;
-    }
-    return element.parentNode || element.host;
-}
-
-/**
- * Returns the scrolling parent of the given element
- */
-// todo: valorkin fix
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function getScrollParent(element) {
-    // Return body, `getScroll` will take care to get the correct `scrollTop` from it
-    if (!element) {
-        return document.body;
-    }
-    switch (element.nodeName) {
-        case 'HTML':
-        case 'BODY':
-            return element.ownerDocument.body;
-        case '#document':
-            return element.body;
-        default:
-    }
-    // Firefox want us to check `-x` and `-y` variations as well
-    const { overflow, overflowX, overflowY } = getStyleComputedProperty(element);
-    if (/(auto|scroll|overlay)/.test(String(overflow) + String(overflowY) + String(overflowX))) {
-        return element;
-    }
-    return getScrollParent(getParentNode(element));
-}
-
 function getOffsetRectRelativeToArbitraryNode(children, parent, fixedPosition = false) {
     const isHTML = parent.nodeName === 'HTML';
     const childrenRect = getBoundingClientRect(children);
     const parentRect = getBoundingClientRect(parent);
-    const scrollParent = getScrollParent(children);
     const styles = getStyleComputedProperty(parent);
     const borderTopWidth = parseFloat(styles.borderTopWidth);
     const borderLeftWidth = parseFloat(styles.borderLeftWidth);
@@ -352,6 +310,44 @@ function getOffsetRectRelativeToArbitraryNode(children, parent, fixedPosition = 
         offsets.marginLeft = marginLeft;
     }
     return offsets;
+}
+
+/**
+ * Returns the parentNode or the host of the element
+ */
+// todo: valorkin fix
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getParentNode(element) {
+    if (element.nodeName === 'HTML') {
+        return element;
+    }
+    return element.parentNode || element.host;
+}
+
+/**
+ * Returns the scrolling parent of the given element
+ */
+// todo: valorkin fix
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getScrollParent(element) {
+    // Return body, `getScroll` will take care to get the correct `scrollTop` from it
+    if (!element) {
+        return document.body;
+    }
+    switch (element.nodeName) {
+        case 'HTML':
+        case 'BODY':
+            return element.ownerDocument.body;
+        case '#document':
+            return element.body;
+        default:
+    }
+    // Firefox want us to check `-x` and `-y` variations as well
+    const { overflow, overflowX, overflowY } = getStyleComputedProperty(element);
+    if (/(auto|scroll|overlay)/.test(String(overflow) + String(overflowY) + String(overflowX))) {
+        return element;
+    }
+    return getScrollParent(getParentNode(element));
 }
 
 /**
@@ -631,7 +627,9 @@ function checkMargins(placement) {
 function updateContainerClass(data, renderer) {
     const target = data.instance.target;
     let containerClass = target.className;
-    const dataPlacement = getBsVer().isBs5 ? PlacementForBs5[data.placement] : data.placement;
+    const dataPlacement = getBsVer().isBs5
+        ? PlacementForBs5[data.placement]
+        : data.placement;
     if (data.placementAuto) {
         containerClass = containerClass.replace(/bs-popover-auto/g, `bs-popover-${dataPlacement}`);
         containerClass = containerClass.replace(/ms-2|me-2|mb-2|mt-2/g, '');
@@ -995,16 +993,16 @@ class PositioningService {
     setOptions(options) {
         this.options = options;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: PositioningService, deps: [{ token: i0.NgZone }, { token: i0.RendererFactory2 }, { token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: PositioningService, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: PositioningService, deps: [{ token: i0.NgZone }, { token: i0.RendererFactory2 }, { token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: PositioningService, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: PositioningService, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: PositioningService, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
-        }], ctorParameters: function () { return [{ type: i0.NgZone }, { type: i0.RendererFactory2 }, { type: undefined, decorators: [{
+        }], ctorParameters: () => [{ type: i0.NgZone }, { type: i0.RendererFactory2 }, { type: undefined, decorators: [{
                     type: Inject,
                     args: [PLATFORM_ID]
-                }] }]; } });
+                }] }] });
 function _getHtmlElement(element) {
     // it means that we got a selector
     if (typeof element === 'string') {

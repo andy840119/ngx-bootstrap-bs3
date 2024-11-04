@@ -1,8 +1,8 @@
-export declare class TypeaheadMatch {
+export declare class TypeaheadMatch<ItemType = any> {
     readonly value: string;
-    readonly item: any;
+    readonly item: ItemType;
     protected header: boolean;
-    constructor(item: any, value?: string, header?: boolean);
+    constructor(item: ItemType, value?: string, header?: boolean);
     isHeader(): boolean;
     toString(): string;
 }

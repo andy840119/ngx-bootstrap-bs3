@@ -8,4 +8,4 @@
  */
 export declare function findLastIndex<T>(array: T[], predicate: (value: T, index: number, obj: T[]) => boolean): number;
 export declare function chunkByNumber<T>(array: T[], size: number): T[][];
-export declare function isNumber(value?: any): value is number;
+export declare function isNumber(value?: unknown): value is number;

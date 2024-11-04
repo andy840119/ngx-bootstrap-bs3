@@ -3,7 +3,7 @@ import { Injectable, Component, ChangeDetectionStrategy, EventEmitter, Directive
 import { getBsVer, warnOnce, parseTriggers, OnChange } from 'ngx-bootstrap/utils';
 import * as i3 from 'ngx-bootstrap/positioning';
 import { PlacementForBs5, PositioningService } from 'ngx-bootstrap/positioning';
-import { __decorate, __metadata } from 'tslib';
+import { __metadata, __decorate } from 'tslib';
 import * as i1 from 'ngx-bootstrap/component-loader';
 import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
 import { timer } from 'rxjs';
@@ -21,10 +21,10 @@ class TooltipConfig {
         /** delay before showing the tooltip */
         this.delay = 0;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipConfig, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipConfig, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipConfig, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipConfig, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }] });
@@ -53,13 +53,13 @@ class TooltipContainerComponent {
             this.classMap[this.containerClass] = true;
         }
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipContainerComponent, deps: [{ token: TooltipConfig }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: TooltipContainerComponent, selector: "bs-tooltip-container", host: { attributes: { "role": "tooltip" }, properties: { "class": "\"tooltip in tooltip-\" + placement + \" \" + \"bs-tooltip-\" + placement + \" \" + placement + \" \" + containerClass", "class.show": "!_bsVersions.isBs3", "class.bs3": "_bsVersions.isBs3", "attr.id": "this.id" } }, ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipContainerComponent, deps: [{ token: TooltipConfig }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: TooltipContainerComponent, selector: "bs-tooltip-container", host: { attributes: { "role": "tooltip" }, properties: { "class": "\"tooltip in tooltip-\" + placement + \" \" + \"bs-tooltip-\" + placement + \" \" + placement + \" \" + containerClass", "class.show": "!_bsVersions.isBs3", "class.bs3": "_bsVersions.isBs3", "attr.id": "this.id" } }, ngImport: i0, template: `
     <div class="tooltip-arrow arrow"></div>
     <div class="tooltip-inner"><ng-content></ng-content></div>
     `, isInline: true, styles: [":host.tooltip{display:block;pointer-events:none;position:absolute}:host.tooltip .tooltip-arrow{position:absolute}\n"], changeDetection: i0.ChangeDetectionStrategy.OnPush }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipContainerComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipContainerComponent, decorators: [{
             type: Component,
             args: [{ selector: 'bs-tooltip-container', changeDetection: ChangeDetectionStrategy.OnPush, host: {
                         '[class]': '"tooltip in tooltip-" + placement + " " + "bs-tooltip-" + placement + " " + placement + " " + containerClass',
@@ -71,7 +71,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImpor
     <div class="tooltip-arrow arrow"></div>
     <div class="tooltip-inner"><ng-content></ng-content></div>
     `, styles: [":host.tooltip{display:block;pointer-events:none;position:absolute}:host.tooltip .tooltip-arrow{position:absolute}\n"] }]
-        }], ctorParameters: function () { return [{ type: TooltipConfig }]; } });
+        }], ctorParameters: () => [{ type: TooltipConfig }] });
 
 let id = 0;
 class TooltipDirective {
@@ -250,10 +250,7 @@ class TooltipDirective {
                 }
             }
         });
-        if (this.isOpen ||
-            this.isDisabled ||
-            this._delayTimeoutId ||
-            !this.tooltip) {
+        if (this.isOpen || this.isDisabled || this._delayTimeoutId || !this.tooltip) {
             return;
         }
         const showTooltip = () => {
@@ -285,8 +282,7 @@ class TooltipDirective {
                 cancelDelayedTooltipShowing();
             });
             if (this.triggers) {
-                parseTriggers(this.triggers)
-                    .forEach((trigger) => {
+                parseTriggers(this.triggers).forEach((trigger) => {
                     if (!trigger.close) {
                         return;
                     }
@@ -314,7 +310,7 @@ class TooltipDirective {
             return;
         }
         if (this._tooltip.instance?.classMap) {
-            this._tooltip.instance.classMap["in"] = false;
+            this._tooltip.instance.classMap['in'] = false;
         }
         setTimeout(() => {
             this._tooltip.hide();
@@ -329,20 +325,20 @@ class TooltipDirective {
         this.onShown.unsubscribe();
         this.onHidden.unsubscribe();
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipDirective, deps: [{ token: i0.ViewContainerRef }, { token: i1.ComponentLoaderFactory }, { token: TooltipConfig }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: i3.PositioningService }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.1.4", type: TooltipDirective, selector: "[tooltip], [tooltipHtml]", inputs: { adaptivePosition: "adaptivePosition", tooltip: "tooltip", placement: "placement", triggers: "triggers", container: "container", containerClass: "containerClass", boundariesElement: "boundariesElement", isOpen: "isOpen", isDisabled: "isDisabled", delay: "delay", htmlContent: ["tooltipHtml", "htmlContent"], _placement: ["tooltipPlacement", "_placement"], _isOpen: ["tooltipIsOpen", "_isOpen"], _enable: ["tooltipEnable", "_enable"], _appendToBody: ["tooltipAppendToBody", "_appendToBody"], tooltipAnimation: "tooltipAnimation", _popupClass: ["tooltipClass", "_popupClass"], _tooltipContext: ["tooltipContext", "_tooltipContext"], _tooltipPopupDelay: ["tooltipPopupDelay", "_tooltipPopupDelay"], tooltipFadeDuration: "tooltipFadeDuration", _tooltipTrigger: ["tooltipTrigger", "_tooltipTrigger"] }, outputs: { tooltipChange: "tooltipChange", onShown: "onShown", onHidden: "onHidden", tooltipStateChanged: "tooltipStateChanged" }, exportAs: ["bs-tooltip"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipDirective, deps: [{ token: i0.ViewContainerRef }, { token: i1.ComponentLoaderFactory }, { token: TooltipConfig }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: i3.PositioningService }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: TooltipDirective, selector: "[tooltip], [tooltipHtml]", inputs: { adaptivePosition: "adaptivePosition", tooltip: "tooltip", placement: "placement", triggers: "triggers", container: "container", containerClass: "containerClass", boundariesElement: "boundariesElement", isOpen: "isOpen", isDisabled: "isDisabled", delay: "delay", htmlContent: ["tooltipHtml", "htmlContent"], _placement: ["tooltipPlacement", "_placement"], _isOpen: ["tooltipIsOpen", "_isOpen"], _enable: ["tooltipEnable", "_enable"], _appendToBody: ["tooltipAppendToBody", "_appendToBody"], tooltipAnimation: "tooltipAnimation", _popupClass: ["tooltipClass", "_popupClass"], _tooltipContext: ["tooltipContext", "_tooltipContext"], _tooltipPopupDelay: ["tooltipPopupDelay", "_tooltipPopupDelay"], tooltipFadeDuration: "tooltipFadeDuration", _tooltipTrigger: ["tooltipTrigger", "_tooltipTrigger"] }, outputs: { tooltipChange: "tooltipChange", onShown: "onShown", onHidden: "onHidden", tooltipStateChanged: "tooltipStateChanged" }, exportAs: ["bs-tooltip"], ngImport: i0 }); }
 }
 __decorate([
     OnChange(),
     __metadata("design:type", Object)
 ], TooltipDirective.prototype, "tooltip", void 0);
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[tooltip], [tooltipHtml]',
                     exportAs: 'bs-tooltip'
                 }]
-        }], ctorParameters: function () { return [{ type: i0.ViewContainerRef }, { type: i1.ComponentLoaderFactory }, { type: TooltipConfig }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: i3.PositioningService }]; }, propDecorators: { adaptivePosition: [{
+        }], ctorParameters: () => [{ type: i0.ViewContainerRef }, { type: i1.ComponentLoaderFactory }, { type: TooltipConfig }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: i3.PositioningService }], propDecorators: { adaptivePosition: [{
                 type: Input
             }], tooltip: [{
                 type: Input
@@ -410,11 +406,11 @@ class TooltipModule {
             providers: [ComponentLoaderFactory, PositioningService]
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.4", ngImport: i0, type: TooltipModule, declarations: [TooltipDirective, TooltipContainerComponent], imports: [CommonModule], exports: [TooltipDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipModule, imports: [CommonModule] }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: TooltipModule, declarations: [TooltipDirective, TooltipContainerComponent], imports: [CommonModule], exports: [TooltipDirective] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipModule, imports: [CommonModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: TooltipModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: TooltipModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [CommonModule],

@@ -9,6 +9,7 @@ const BOOTSTRAP_VERSION = currentVersions.BOOTSTRAP_VERSION;
 const defaultStyleFileRegex = /styles\.(c|le|sc|sa)ss/;
 // Regular expression that matches all files that have a proper stylesheet extension
 const validStyleFileRegex = /\.(c|le|sc|sa)ss/;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getDependencies(host) {
     return [
         { name: 'bootstrap', version: BOOTSTRAP_VERSION },
@@ -21,12 +22,10 @@ function getProjectStyleFile(existingStyles, extension) {
     if (defaultExtension) {
         return defaultExtension;
     }
-    ;
     const fallbackStylePath = existingStyles.find((file) => extension ? file === null || file === void 0 ? void 0 : file.endsWith(`.${extension}`) : validStyleFileRegex.test(file));
     if (fallbackStylePath) {
         return (0, core_1.normalize)(fallbackStylePath);
     }
-    ;
 }
 exports.getProjectStyleFile = getProjectStyleFile;
 //# sourceMappingURL=getVersions.js.map

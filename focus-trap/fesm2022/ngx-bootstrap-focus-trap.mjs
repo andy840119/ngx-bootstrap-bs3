@@ -47,10 +47,10 @@ class FocusTrapManager {
             }
         }
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapManager, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapManager, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapManager, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }] });
@@ -121,16 +121,16 @@ class Platform {
         /** Whether the current browser is Safari. */
         this.SAFARI = this.isBrowser && /safari/i.test(navigator.userAgent) && this.WEBKIT;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: Platform, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: Platform, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: Platform, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
-        }], ctorParameters: function () { return [{ type: Object, decorators: [{
+        }], ctorParameters: () => [{ type: Object, decorators: [{
                     type: Inject,
                     args: [PLATFORM_ID]
-                }] }]; } });
+                }] }] });
 
 /**
  * @license
@@ -265,13 +265,13 @@ class InteractivityChecker {
         return isPotentiallyFocusable(element) && !this.isDisabled(element) &&
             (config?.ignoreVisibility || this.isVisible(element));
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: InteractivityChecker, deps: [{ token: Platform }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: InteractivityChecker, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, deps: [{ token: Platform }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: InteractivityChecker, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
-        }], ctorParameters: function () { return [{ type: Platform }]; } });
+        }], ctorParameters: () => [{ type: Platform }] });
 /**
  * Returns the frame element from a window object. Since browsers like MS Edge throw errors if
  * the frameElement property is being accessed from a different host address, this property
@@ -684,16 +684,16 @@ class FocusTrapFactory {
     create(element, deferCaptureElements = false) {
         return new FocusTrap(element, this._checker, this._ngZone, this._document, deferCaptureElements);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapFactory, deps: [{ token: InteractivityChecker }, { token: i0.NgZone }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapFactory, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, deps: [{ token: InteractivityChecker }, { token: i0.NgZone }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapFactory, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
-        }], ctorParameters: function () { return [{ type: InteractivityChecker }, { type: i0.NgZone }, { type: undefined, decorators: [{
+        }], ctorParameters: () => [{ type: InteractivityChecker }, { type: i0.NgZone }, { type: undefined, decorators: [{
                     type: Inject,
                     args: [DOCUMENT]
-                }] }]; } });
+                }] }] });
 /** Directive for trapping focus within a region. */
 class FocusTrapDirective {
     /** Whether the focus trap is active. */
@@ -753,19 +753,19 @@ class FocusTrapDirective {
         this._previouslyFocusedElement = this._document.activeElement;
         this.focusTrap.focusInitialElementWhenReady();
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapDirective, deps: [{ token: i0.ElementRef }, { token: FocusTrapFactory }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "16.1.4", type: FocusTrapDirective, selector: "[focusTrap]", inputs: { enabled: ["cdkTrapFocus", "enabled"], autoCapture: ["cdkTrapFocusAutoCapture", "autoCapture"] }, exportAs: ["focusTrap"], usesOnChanges: true, ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapDirective, deps: [{ token: i0.ElementRef }, { token: FocusTrapFactory }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: FocusTrapDirective, selector: "[focusTrap]", inputs: { enabled: ["cdkTrapFocus", "enabled"], autoCapture: ["cdkTrapFocusAutoCapture", "autoCapture"] }, exportAs: ["focusTrap"], usesOnChanges: true, ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[focusTrap]',
                     exportAs: 'focusTrap'
                 }]
-        }], ctorParameters: function () { return [{ type: i0.ElementRef }, { type: FocusTrapFactory }, { type: undefined, decorators: [{
+        }], ctorParameters: () => [{ type: i0.ElementRef }, { type: FocusTrapFactory }, { type: undefined, decorators: [{
                     type: Inject,
                     args: [DOCUMENT]
-                }] }]; }, propDecorators: { enabled: [{
+                }] }], propDecorators: { enabled: [{
                 type: Input,
                 args: ['cdkTrapFocus']
             }], autoCapture: [{
@@ -784,11 +784,11 @@ class FocusTrapModule {
             ]
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapModule, declarations: [FocusTrapDirective], imports: [CommonModule], exports: [FocusTrapDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapModule, imports: [CommonModule] }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, declarations: [FocusTrapDirective], imports: [CommonModule], exports: [FocusTrapDirective] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, imports: [CommonModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: FocusTrapModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, decorators: [{
             type: NgModule,
             args: [{
                     imports: [CommonModule],

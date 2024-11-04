@@ -1,7 +1,7 @@
 import { ElementRef, EventEmitter, OnDestroy, OnInit, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { PopoverConfig } from './popover.config';
 import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
-import { PositioningService, AvailbleBSPositions } from 'ngx-bootstrap/positioning';
+import { PositioningService, AvailableBSPositions } from 'ngx-bootstrap/positioning';
 import * as i0 from "@angular/core";
 /**
  * A lightweight, extensible directive for fancy popover creation.
@@ -14,7 +14,7 @@ export declare class PopoverDirective implements OnInit, OnDestroy {
     popoverId: number;
     /** sets disable adaptive position */
     adaptivePosition: boolean;
-    boundariesElement?: ('viewport' | 'scrollParent' | 'window');
+    boundariesElement?: 'viewport' | 'scrollParent' | 'window';
     /**
      * Content to be displayed as popover.
      */
@@ -30,7 +30,7 @@ export declare class PopoverDirective implements OnInit, OnDestroy {
     /**
      * Placement of a popover. Accepts: "top", "bottom", "left", "right"
      */
-    placement: AvailbleBSPositions;
+    placement: AvailableBSPositions;
     /**
      * Close popover on outside click
      */

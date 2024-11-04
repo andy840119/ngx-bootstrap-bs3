@@ -1,6 +1,6 @@
 {
   "name": "ngx-bootstrap/locale",
-  "version": "11.0.2",
+  "version": "12.0.0",
   "author": "Dmitriy Shekhovtsov <valorkin@gmail.com>",
   "license": "MIT",
   "module": "fesm2022/ngx-bootstrap-locale.mjs",
@@ -19,8 +19,5 @@
   "sideEffects": false,
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "peerDependencies": {
-    "ngx-bootstrap/chronos": "11.0.2"
   }
 }

@@ -6,8 +6,8 @@ export class BsTimepickerViewComponent {
         this.hours = 0;
         this.minutes = 0;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsTimepickerViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "16.1.4", type: BsTimepickerViewComponent, selector: "bs-timepicker", ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsTimepickerViewComponent, deps: [], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsTimepickerViewComponent, selector: "bs-timepicker", ngImport: i0, template: `
     <div class="bs-timepicker-container">
       <div class="bs-timepicker-controls">
         <button class="bs-decrease" type="button">-</button>
@@ -27,7 +27,7 @@ export class BsTimepickerViewComponent {
     </div>
   `, isInline: true }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.4", ngImport: i0, type: BsTimepickerViewComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsTimepickerViewComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-timepicker',

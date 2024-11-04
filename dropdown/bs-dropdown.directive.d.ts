@@ -95,7 +95,7 @@ export declare class BsDropdownDirective implements OnInit, OnDestroy {
     toggle(value?: boolean): void;
     /** @internal */
     _contains(event: MouseEvent): boolean;
-    navigationClick(event: any): void;
+    navigationClick(event: KeyboardEvent): void;
     ngOnDestroy(): void;
     private addBs4Polyfills;
     private playAnimation;
