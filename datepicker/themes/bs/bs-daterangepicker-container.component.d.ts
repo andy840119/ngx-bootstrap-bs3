@@ -42,5 +42,5 @@ export declare class BsDaterangepickerContainerComponent extends BsDatepickerAbs
     setRangeOnCalendar(dates: BsCustomDates): void;
     setMaxDateRangeOnCalendar(currentSelection: Date): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDaterangepickerContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDaterangepickerContainerComponent, "bs-daterangepicker-container", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDaterangepickerContainerComponent, "bs-daterangepicker-container", never, {}, {}, never, never, true, never>;
 }

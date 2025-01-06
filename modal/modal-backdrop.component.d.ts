@@ -13,5 +13,5 @@ export declare class ModalBackdropComponent implements OnInit {
     constructor(element: ElementRef, renderer: Renderer2);
     ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ModalBackdropComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ModalBackdropComponent, "bs-modal-backdrop", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ModalBackdropComponent, "bs-modal-backdrop", never, {}, {}, never, never, true, never>;
 }

@@ -4,5 +4,5 @@ export declare class BsTimepickerViewComponent {
     hours: number;
     minutes: number;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsTimepickerViewComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsTimepickerViewComponent, "bs-timepicker", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsTimepickerViewComponent, "bs-timepicker", never, {}, {}, never, never, true, never>;
 }

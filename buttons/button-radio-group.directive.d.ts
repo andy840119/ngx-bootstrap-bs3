@@ -31,5 +31,5 @@ export declare class ButtonRadioGroupDirective implements ControlValueAccessor {
     private selectInDirection;
     private getActiveOrFocusedRadio;
     static ɵfac: i0.ɵɵFactoryDeclaration<ButtonRadioGroupDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonRadioGroupDirective, "[btnRadioGroup]", never, {}, {}, ["radioButtons"], never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonRadioGroupDirective, "[btnRadioGroup]", never, {}, {}, ["radioButtons"], never, true, never>;
 }

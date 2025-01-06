@@ -12,5 +12,5 @@ export declare class PopoverContainerComponent {
     constructor(config: PopoverConfig);
     checkMarginNecessity(): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<PopoverContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<PopoverContainerComponent, "popover-container", never, { "placement": { "alias": "placement"; "required": false; }; "title": { "alias": "title"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<PopoverContainerComponent, "popover-container", never, { "placement": { "alias": "placement"; "required": false; }; "title": { "alias": "title"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

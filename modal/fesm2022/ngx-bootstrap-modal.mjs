@@ -1,10 +1,9 @@
 import * as i0 from '@angular/core';
-import { Injectable, InjectionToken, Component, HostListener, EventEmitter, Directive, Optional, Inject, Input, Output, NgModule } from '@angular/core';
-import { document, isBs3, Utils, window as window$1 } from 'ngx-bootstrap/utils';
-import * as i2 from 'ngx-bootstrap/focus-trap';
-import { FocusTrapModule } from 'ngx-bootstrap/focus-trap';
+import { Injectable, InjectionToken, Component, EventEmitter, Optional, Inject, HostListener, Directive, Input, Output, NgModule } from '@angular/core';
 import * as i1 from 'ngx-bootstrap/component-loader';
 import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
+import { isBs3, Utils, document, window as window$1 } from 'ngx-bootstrap/utils';
+import { FocusTrapDirective, FocusTrapModule } from 'ngx-bootstrap/focus-trap';
 import { PositioningService } from 'ngx-bootstrap/positioning';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,10 +18,10 @@ class BsModalRef {
          */
         this.setClass = () => void 0;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalRef, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalRef, providedIn: 'platform' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalRef, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalRef, providedIn: 'platform' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalRef, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalRef, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'platform' }]
         }] });
@@ -35,10 +34,10 @@ class ModalBackdropOptions {
 }
 
 class ModalOptions {
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalOptions, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalOptions, providedIn: 'platform' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalOptions, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalOptions, providedIn: 'platform' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalOptions, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalOptions, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'platform' }]
         }] });
@@ -59,7 +58,7 @@ const CLASS_NAME = {
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    IN: 'in',
+    IN: 'in', // bs3
     SHOW: 'show' // bs4
 };
 const SELECTOR = {
@@ -77,6 +76,283 @@ const DISMISS_REASONS = {
     ESC: 'esc',
     BACK: 'browser-back-navigation-clicked'
 };
+
+/** This component will be added as background layout for modals if enabled */
+class ModalBackdropComponent {
+    get isAnimated() {
+        return this._isAnimated;
+    }
+    set isAnimated(value) {
+        this._isAnimated = value;
+    }
+    get isShown() {
+        return this._isShown;
+    }
+    set isShown(value) {
+        this._isShown = value;
+        if (value) {
+            this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.IN}`);
+        }
+        else {
+            this.renderer.removeClass(this.element.nativeElement, `${CLASS_NAME.IN}`);
+        }
+        if (!isBs3()) {
+            if (value) {
+                this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.SHOW}`);
+            }
+            else {
+                this.renderer.removeClass(this.element.nativeElement, `${CLASS_NAME.SHOW}`);
+            }
+        }
+    }
+    constructor(element, renderer) {
+        this._isAnimated = false;
+        this._isShown = false;
+        this.element = element;
+        this.renderer = renderer;
+    }
+    ngOnInit() {
+        if (this.isAnimated) {
+            this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.FADE}`);
+            Utils.reflow(this.element.nativeElement);
+        }
+        this.isShown = true;
+    }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalBackdropComponent, deps: [{ token: i0.ElementRef }, { token: i0.Renderer2 }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.0.1", type: ModalBackdropComponent, isStandalone: true, selector: "bs-modal-backdrop", host: { classAttribute: "modal-backdrop" }, ngImport: i0, template: ' ', isInline: true }); }
+}
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalBackdropComponent, decorators: [{
+            type: Component,
+            args: [{
+                    selector: 'bs-modal-backdrop',
+                    template: ' ',
+                    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+                    host: { class: CLASS_NAME.BACKDROP },
+                    standalone: true
+                }]
+        }], ctorParameters: () => [{ type: i0.ElementRef }, { type: i0.Renderer2 }] });
+
+let currentId = 1;
+class BsModalService {
+    constructor(rendererFactory, clf, modalDefaultOption) {
+        this.clf = clf;
+        this.modalDefaultOption = modalDefaultOption;
+        this.onShow = new EventEmitter();
+        this.onShown = new EventEmitter();
+        this.onHide = new EventEmitter();
+        this.onHidden = new EventEmitter();
+        this.isBodyOverflowing = false;
+        this.originalBodyPadding = 0;
+        this.scrollbarWidth = 0;
+        this.modalsCount = 0;
+        this.lastHiddenId = 0;
+        this.loaders = [];
+        this._focusEl = null;
+        this._backdropLoader = this.clf.createLoader();
+        this._renderer = rendererFactory.createRenderer(null, null);
+        this.config = modalDefaultOption ?
+            (Object.assign({}, modalConfigDefaults, modalDefaultOption)) :
+            modalConfigDefaults;
+    }
+    /** Shows a modal */
+    show(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    content, config) {
+        this._focusEl = document.activeElement;
+        this.modalsCount++;
+        this._createLoaders();
+        // must be different per every show() call
+        const id = config?.id || currentId++;
+        this.config = this.modalDefaultOption ?
+            Object.assign({}, modalConfigDefaults, this.modalDefaultOption, config) :
+            Object.assign({}, modalConfigDefaults, config);
+        this.config.id = id;
+        this._showBackdrop();
+        this.lastDismissReason = void 0;
+        return this._showModal(content);
+    }
+    hide(id) {
+        if (this.lastHiddenId === id) {
+            return;
+        }
+        this.lastHiddenId = id;
+        if (this.modalsCount === 1 || id == null) {
+            this._hideBackdrop();
+            this.resetScrollbar();
+        }
+        this.modalsCount = this.modalsCount >= 1 && id != null ? this.modalsCount - 1 : 0;
+        setTimeout(() => {
+            this._hideModal(id);
+            this.removeLoaders(id);
+        }, this.config.animated ? TRANSITION_DURATIONS.BACKDROP : 0);
+        if (this._focusEl) {
+            this._focusEl.focus();
+        }
+    }
+    _showBackdrop() {
+        const isBackdropEnabled = this.config.backdrop === true || this.config.backdrop === 'static';
+        const isBackdropInDOM = !this.backdropRef || !this.backdropRef.instance.isShown;
+        if (this.modalsCount === 1) {
+            this.removeBackdrop();
+            if (isBackdropEnabled && isBackdropInDOM) {
+                this._backdropLoader
+                    .attach(ModalBackdropComponent)
+                    .to('body')
+                    .show({ isAnimated: this.config.animated });
+                this.backdropRef = this._backdropLoader._componentRef;
+            }
+        }
+    }
+    _hideBackdrop() {
+        if (!this.backdropRef) {
+            return;
+        }
+        this.backdropRef.instance.isShown = false;
+        const duration = this.config.animated ? TRANSITION_DURATIONS.BACKDROP : 0;
+        setTimeout(() => this.removeBackdrop(), duration);
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    _showModal(content) {
+        const modalLoader = this.loaders[this.loaders.length - 1];
+        if (this.config && this.config.providers) {
+            for (const provider of this.config.providers) {
+                modalLoader.provide(provider);
+            }
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const bsModalRef = new BsModalRef();
+        const modalContainerRef = modalLoader
+            .provide({ provide: ModalOptions, useValue: this.config })
+            .provide({ provide: BsModalRef, useValue: bsModalRef })
+            .attach(ModalContainerComponent)
+            .to('body');
+        // use quick way to fix the animate issue for now
+        // see: https://github.com/valor-software/ngx-bootstrap/pull/6565
+        bsModalRef.hide = () => modalContainerRef.instance?.hide();
+        bsModalRef.setClass = (newClass) => {
+            if (modalContainerRef.instance) {
+                modalContainerRef.instance.config.class = newClass;
+            }
+        };
+        bsModalRef.onHidden = new EventEmitter();
+        bsModalRef.onHide = new EventEmitter();
+        this.copyEvent(modalLoader.onBeforeHide, bsModalRef.onHide);
+        this.copyEvent(modalLoader.onHidden, bsModalRef.onHidden);
+        // call 'show' method after assign setClass in bsModalRef.
+        // it makes modal component's bsModalRef available to call setClass method
+        modalContainerRef.show({
+            content,
+            isAnimated: this.config.animated,
+            initialState: this.config.initialState,
+            bsModalService: this,
+            id: this.config.id
+        });
+        if (modalContainerRef.instance) {
+            modalContainerRef.instance.level = this.getModalsCount();
+            bsModalRef.content = modalLoader.getInnerComponent();
+            bsModalRef.id = modalContainerRef.instance.config?.id;
+        }
+        return bsModalRef;
+    }
+    _hideModal(id) {
+        if (id != null) {
+            const indexToRemove = this.loaders.findIndex(loader => loader.instance?.config.id === id);
+            const modalLoader = this.loaders[indexToRemove];
+            if (modalLoader) {
+                modalLoader.hide(id);
+            }
+        }
+        else {
+            this.loaders.forEach((loader) => {
+                if (loader.instance) {
+                    loader.hide(loader.instance.config.id);
+                }
+            });
+        }
+    }
+    getModalsCount() {
+        return this.modalsCount;
+    }
+    setDismissReason(reason) {
+        this.lastDismissReason = reason;
+    }
+    removeBackdrop() {
+        this._renderer.removeClass(document.body, CLASS_NAME.OPEN);
+        this._renderer.setStyle(document.body, 'overflow-y', '');
+        this._backdropLoader.hide();
+        this.backdropRef = void 0;
+    }
+    /** Checks if the body is overflowing and sets scrollbar width */
+    /** @internal */
+    checkScrollbar() {
+        this.isBodyOverflowing = document.body.clientWidth < window.innerWidth;
+        this.scrollbarWidth = this.getScrollbarWidth();
+    }
+    setScrollbar() {
+        if (!document) {
+            return;
+        }
+        this.originalBodyPadding = parseInt(window
+            .getComputedStyle(document.body)
+            .getPropertyValue('padding-right') || '0', 10);
+        if (this.isBodyOverflowing) {
+            document.body.style.paddingRight = `${this.originalBodyPadding +
+                this.scrollbarWidth}px`;
+        }
+    }
+    resetScrollbar() {
+        document.body.style.paddingRight = `${this.originalBodyPadding}px`;
+    }
+    // thx d.walsh
+    getScrollbarWidth() {
+        const scrollDiv = this._renderer.createElement('div');
+        this._renderer.addClass(scrollDiv, CLASS_NAME.SCROLLBAR_MEASURER);
+        this._renderer.appendChild(document.body, scrollDiv);
+        const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+        this._renderer.removeChild(document.body, scrollDiv);
+        return scrollbarWidth;
+    }
+    _createLoaders() {
+        const loader = this.clf.createLoader();
+        this.copyEvent(loader.onBeforeShow, this.onShow);
+        this.copyEvent(loader.onShown, this.onShown);
+        this.copyEvent(loader.onBeforeHide, this.onHide);
+        this.copyEvent(loader.onHidden, this.onHidden);
+        this.loaders.push(loader);
+    }
+    removeLoaders(id) {
+        if (id != null) {
+            const indexToRemove = this.loaders.findIndex(loader => loader.instance?.config.id === id);
+            if (indexToRemove >= 0) {
+                this.loaders.splice(indexToRemove, 1);
+                this.loaders.forEach((loader, i) => {
+                    if (loader.instance) {
+                        loader.instance.level = i + 1;
+                    }
+                });
+            }
+        }
+        else {
+            this.loaders.splice(0, this.loaders.length);
+        }
+    }
+    copyEvent(from, to) {
+        from.subscribe((data) => {
+            to.emit(this.lastDismissReason || data);
+        });
+    }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalService, deps: [{ token: i0.RendererFactory2 }, { token: i1.ComponentLoaderFactory }, { token: MODAL_CONFIG_DEFAULT_OVERRIDE, optional: true }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalService, providedIn: 'platform' }); }
+}
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsModalService, decorators: [{
+            type: Injectable,
+            args: [{ providedIn: 'platform' }]
+        }], ctorParameters: () => [{ type: i0.RendererFactory2 }, { type: i1.ComponentLoaderFactory }, { type: ModalOptions, decorators: [{
+                    type: Optional
+                }, {
+                    type: Inject,
+                    args: [MODAL_CONFIG_DEFAULT_OVERRIDE]
+                }] }] });
 
 class ModalContainerComponent {
     constructor(options, _element, _renderer) {
@@ -175,8 +451,8 @@ class ModalContainerComponent {
             }
         }, this.isAnimated ? TRANSITION_DURATIONS.MODAL : 0);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalContainerComponent, deps: [{ token: ModalOptions }, { token: i0.ElementRef }, { token: i0.Renderer2 }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: ModalContainerComponent, selector: "modal-container", host: { attributes: { "role": "dialog", "tabindex": "-1" }, listeners: { "mousedown": "onClickStarted($event)", "click": "onClickStop($event)", "window:popstate": "onPopState()", "window:keydown.esc": "onEsc($event)" }, properties: { "attr.aria-modal": "true", "attr.aria-labelledby": "config.ariaLabelledBy", "attr.aria-describedby": "config.ariaDescribedby" }, classAttribute: "modal" }, ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalContainerComponent, deps: [{ token: ModalOptions }, { token: i0.ElementRef }, { token: i0.Renderer2 }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.0.1", type: ModalContainerComponent, isStandalone: true, selector: "modal-container", host: { attributes: { "role": "dialog", "tabindex": "-1" }, listeners: { "mousedown": "onClickStarted($event)", "click": "onClickStop($event)", "window:popstate": "onPopState()", "window:keydown.esc": "onEsc($event)" }, properties: { "attr.aria-modal": "true", "attr.aria-labelledby": "config.ariaLabelledBy", "attr.aria-describedby": "config.ariaDescribedby" }, classAttribute: "modal" }, providers: [BsModalService], ngImport: i0, template: `
     <div [class]="'modal-dialog' + (config.class ? ' ' + config.class : '')"
          role="document"
          focusTrap>
@@ -184,9 +460,9 @@ class ModalContainerComponent {
         <ng-content></ng-content>
       </div>
     </div>
-  `, isInline: true, dependencies: [{ kind: "directive", type: i2.FocusTrapDirective, selector: "[focusTrap]", inputs: ["cdkTrapFocus", "cdkTrapFocusAutoCapture"], exportAs: ["focusTrap"] }] }); }
+  `, isInline: true, dependencies: [{ kind: "directive", type: FocusTrapDirective, selector: "[focusTrap]", inputs: ["cdkTrapFocus", "cdkTrapFocusAutoCapture"], exportAs: ["focusTrap"] }] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalContainerComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalContainerComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'modal-container',
@@ -207,7 +483,10 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
                         '[attr.aria-modal]': 'true',
                         '[attr.aria-labelledby]': 'config.ariaLabelledBy',
                         '[attr.aria-describedby]': 'config.ariaDescribedby'
-                    }
+                    },
+                    standalone: true,
+                    imports: [FocusTrapDirective],
+                    providers: [BsModalService]
                 }]
         }], ctorParameters: () => [{ type: ModalOptions }, { type: i0.ElementRef }, { type: i0.Renderer2 }], propDecorators: { onClickStarted: [{
                 type: HostListener,
@@ -222,60 +501,6 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
                 type: HostListener,
                 args: ['window:keydown.esc', ['$event']]
             }] } });
-
-/** This component will be added as background layout for modals if enabled */
-class ModalBackdropComponent {
-    get isAnimated() {
-        return this._isAnimated;
-    }
-    set isAnimated(value) {
-        this._isAnimated = value;
-    }
-    get isShown() {
-        return this._isShown;
-    }
-    set isShown(value) {
-        this._isShown = value;
-        if (value) {
-            this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.IN}`);
-        }
-        else {
-            this.renderer.removeClass(this.element.nativeElement, `${CLASS_NAME.IN}`);
-        }
-        if (!isBs3()) {
-            if (value) {
-                this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.SHOW}`);
-            }
-            else {
-                this.renderer.removeClass(this.element.nativeElement, `${CLASS_NAME.SHOW}`);
-            }
-        }
-    }
-    constructor(element, renderer) {
-        this._isAnimated = false;
-        this._isShown = false;
-        this.element = element;
-        this.renderer = renderer;
-    }
-    ngOnInit() {
-        if (this.isAnimated) {
-            this.renderer.addClass(this.element.nativeElement, `${CLASS_NAME.FADE}`);
-            Utils.reflow(this.element.nativeElement);
-        }
-        this.isShown = true;
-    }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalBackdropComponent, deps: [{ token: i0.ElementRef }, { token: i0.Renderer2 }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: ModalBackdropComponent, selector: "bs-modal-backdrop", host: { classAttribute: "modal-backdrop" }, ngImport: i0, template: ' ', isInline: true }); }
-}
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalBackdropComponent, decorators: [{
-            type: Component,
-            args: [{
-                    selector: 'bs-modal-backdrop',
-                    template: ' ',
-                    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-                    host: { class: CLASS_NAME.BACKDROP }
-                }]
-        }], ctorParameters: () => [{ type: i0.ElementRef }, { type: i0.Renderer2 }] });
 
 // todo: should we support enforce focus in?
 // todo: in original bs there are was a way to prevent modal from showing
@@ -604,14 +829,15 @@ class ModalDirective {
         this._renderer.removeChild(document.body, scrollDiv);
         return scrollbarWidth;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalDirective, deps: [{ token: i0.ElementRef }, { token: i0.ViewContainerRef }, { token: i0.Renderer2 }, { token: i1.ComponentLoaderFactory }, { token: MODAL_CONFIG_DEFAULT_OVERRIDE, optional: true }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: ModalDirective, selector: "[bsModal]", inputs: { config: "config", closeInterceptor: "closeInterceptor" }, outputs: { onShow: "onShow", onShown: "onShown", onHide: "onHide", onHidden: "onHidden" }, host: { listeners: { "mousedown": "onClickStarted($event)", "mouseup": "onClickStop($event)", "keydown.esc": "onEsc($event)" } }, exportAs: ["bs-modal"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalDirective, deps: [{ token: i0.ElementRef }, { token: i0.ViewContainerRef }, { token: i0.Renderer2 }, { token: i1.ComponentLoaderFactory }, { token: MODAL_CONFIG_DEFAULT_OVERRIDE, optional: true }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "18.0.1", type: ModalDirective, isStandalone: true, selector: "[bsModal]", inputs: { config: "config", closeInterceptor: "closeInterceptor" }, outputs: { onShow: "onShow", onShown: "onShown", onHide: "onHide", onHidden: "onHidden" }, host: { listeners: { "mousedown": "onClickStarted($event)", "mouseup": "onClickStop($event)", "keydown.esc": "onEsc($event)" } }, exportAs: ["bs-modal"], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[bsModal]',
-                    exportAs: 'bs-modal'
+                    exportAs: 'bs-modal',
+                    standalone: true
                 }]
         }], ctorParameters: () => [{ type: i0.ElementRef }, { type: i0.ViewContainerRef }, { type: i0.Renderer2 }, { type: i1.ComponentLoaderFactory }, { type: ModalOptions, decorators: [{
                     type: Optional
@@ -641,248 +867,33 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
                 args: ['keydown.esc', ['$event']]
             }] } });
 
-let currentId = 1;
-class BsModalService {
-    constructor(rendererFactory, clf, modalDefaultOption) {
-        this.clf = clf;
-        this.modalDefaultOption = modalDefaultOption;
-        this.onShow = new EventEmitter();
-        this.onShown = new EventEmitter();
-        this.onHide = new EventEmitter();
-        this.onHidden = new EventEmitter();
-        this.isBodyOverflowing = false;
-        this.originalBodyPadding = 0;
-        this.scrollbarWidth = 0;
-        this.modalsCount = 0;
-        this.loaders = [];
-        this._focusEl = null;
-        this._backdropLoader = this.clf.createLoader();
-        this._renderer = rendererFactory.createRenderer(null, null);
-        this.config = modalDefaultOption ?
-            (Object.assign({}, modalConfigDefaults, modalDefaultOption)) :
-            modalConfigDefaults;
-    }
-    /** Shows a modal */
-    show(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    content, config) {
-        this._focusEl = document.activeElement;
-        this.modalsCount++;
-        this._createLoaders();
-        // must be different per every show() call
-        const id = config?.id || currentId++;
-        this.config = this.modalDefaultOption ?
-            Object.assign({}, modalConfigDefaults, this.modalDefaultOption, config) :
-            Object.assign({}, modalConfigDefaults, config);
-        this.config.id = id;
-        this._showBackdrop();
-        this.lastDismissReason = void 0;
-        return this._showModal(content);
-    }
-    hide(id) {
-        if (this.modalsCount === 1 || id == null) {
-            this._hideBackdrop();
-            this.resetScrollbar();
-        }
-        this.modalsCount = this.modalsCount >= 1 && id != null ? this.modalsCount - 1 : 0;
-        setTimeout(() => {
-            this._hideModal(id);
-            this.removeLoaders(id);
-        }, this.config.animated ? TRANSITION_DURATIONS.BACKDROP : 0);
-        if (this._focusEl) {
-            this._focusEl.focus();
-        }
-    }
-    _showBackdrop() {
-        const isBackdropEnabled = this.config.backdrop === true || this.config.backdrop === 'static';
-        const isBackdropInDOM = !this.backdropRef || !this.backdropRef.instance.isShown;
-        if (this.modalsCount === 1) {
-            this.removeBackdrop();
-            if (isBackdropEnabled && isBackdropInDOM) {
-                this._backdropLoader
-                    .attach(ModalBackdropComponent)
-                    .to('body')
-                    .show({ isAnimated: this.config.animated });
-                this.backdropRef = this._backdropLoader._componentRef;
-            }
-        }
-    }
-    _hideBackdrop() {
-        if (!this.backdropRef) {
-            return;
-        }
-        this.backdropRef.instance.isShown = false;
-        const duration = this.config.animated ? TRANSITION_DURATIONS.BACKDROP : 0;
-        setTimeout(() => this.removeBackdrop(), duration);
-    }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    _showModal(content) {
-        const modalLoader = this.loaders[this.loaders.length - 1];
-        if (this.config && this.config.providers) {
-            for (const provider of this.config.providers) {
-                modalLoader.provide(provider);
-            }
-        }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const bsModalRef = new BsModalRef();
-        const modalContainerRef = modalLoader
-            .provide({ provide: ModalOptions, useValue: this.config })
-            .provide({ provide: BsModalRef, useValue: bsModalRef })
-            .attach(ModalContainerComponent)
-            .to('body');
-        // use quick way to fix the animate issue for now
-        // see: https://github.com/valor-software/ngx-bootstrap/pull/6565
-        bsModalRef.hide = () => modalContainerRef.instance?.hide();
-        bsModalRef.setClass = (newClass) => {
-            if (modalContainerRef.instance) {
-                modalContainerRef.instance.config.class = newClass;
-            }
-        };
-        bsModalRef.onHidden = new EventEmitter();
-        bsModalRef.onHide = new EventEmitter();
-        this.copyEvent(modalLoader.onBeforeHide, bsModalRef.onHide);
-        this.copyEvent(modalLoader.onHidden, bsModalRef.onHidden);
-        // call 'show' method after assign setClass in bsModalRef.
-        // it makes modal component's bsModalRef available to call setClass method
-        modalContainerRef.show({
-            content,
-            isAnimated: this.config.animated,
-            initialState: this.config.initialState,
-            bsModalService: this,
-            id: this.config.id
-        });
-        if (modalContainerRef.instance) {
-            modalContainerRef.instance.level = this.getModalsCount();
-            bsModalRef.content = modalLoader.getInnerComponent();
-            bsModalRef.id = modalContainerRef.instance.config?.id;
-        }
-        return bsModalRef;
-    }
-    _hideModal(id) {
-        if (id != null) {
-            const indexToRemove = this.loaders.findIndex(loader => loader.instance?.config.id === id);
-            const modalLoader = this.loaders[indexToRemove];
-            if (modalLoader) {
-                modalLoader.hide(id);
-            }
-        }
-        else {
-            this.loaders.forEach((loader) => {
-                if (loader.instance) {
-                    loader.hide(loader.instance.config.id);
-                }
-            });
-        }
-    }
-    getModalsCount() {
-        return this.modalsCount;
-    }
-    setDismissReason(reason) {
-        this.lastDismissReason = reason;
-    }
-    removeBackdrop() {
-        this._renderer.removeClass(document.body, CLASS_NAME.OPEN);
-        this._renderer.setStyle(document.body, 'overflow-y', '');
-        this._backdropLoader.hide();
-        this.backdropRef = void 0;
-    }
-    /** Checks if the body is overflowing and sets scrollbar width */
-    /** @internal */
-    checkScrollbar() {
-        this.isBodyOverflowing = document.body.clientWidth < window.innerWidth;
-        this.scrollbarWidth = this.getScrollbarWidth();
-    }
-    setScrollbar() {
-        if (!document) {
-            return;
-        }
-        this.originalBodyPadding = parseInt(window
-            .getComputedStyle(document.body)
-            .getPropertyValue('padding-right') || '0', 10);
-        if (this.isBodyOverflowing) {
-            document.body.style.paddingRight = `${this.originalBodyPadding +
-                this.scrollbarWidth}px`;
-        }
-    }
-    resetScrollbar() {
-        document.body.style.paddingRight = `${this.originalBodyPadding}px`;
-    }
-    // thx d.walsh
-    getScrollbarWidth() {
-        const scrollDiv = this._renderer.createElement('div');
-        this._renderer.addClass(scrollDiv, CLASS_NAME.SCROLLBAR_MEASURER);
-        this._renderer.appendChild(document.body, scrollDiv);
-        const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-        this._renderer.removeChild(document.body, scrollDiv);
-        return scrollbarWidth;
-    }
-    _createLoaders() {
-        const loader = this.clf.createLoader();
-        this.copyEvent(loader.onBeforeShow, this.onShow);
-        this.copyEvent(loader.onShown, this.onShown);
-        this.copyEvent(loader.onBeforeHide, this.onHide);
-        this.copyEvent(loader.onHidden, this.onHidden);
-        this.loaders.push(loader);
-    }
-    removeLoaders(id) {
-        if (id != null) {
-            const indexToRemove = this.loaders.findIndex(loader => loader.instance?.config.id === id);
-            if (indexToRemove >= 0) {
-                this.loaders.splice(indexToRemove, 1);
-                this.loaders.forEach((loader, i) => {
-                    if (loader.instance) {
-                        loader.instance.level = i + 1;
-                    }
-                });
-            }
-        }
-        else {
-            this.loaders.splice(0, this.loaders.length);
-        }
-    }
-    copyEvent(from, to) {
-        from.subscribe((data) => {
-            to.emit(this.lastDismissReason || data);
-        });
-    }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalService, deps: [{ token: i0.RendererFactory2 }, { token: i1.ComponentLoaderFactory }, { token: MODAL_CONFIG_DEFAULT_OVERRIDE, optional: true }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalService, providedIn: 'platform' }); }
-}
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsModalService, decorators: [{
-            type: Injectable,
-            args: [{ providedIn: 'platform' }]
-        }], ctorParameters: () => [{ type: i0.RendererFactory2 }, { type: i1.ComponentLoaderFactory }, { type: ModalOptions, decorators: [{
-                    type: Optional
-                }, {
-                    type: Inject,
-                    args: [MODAL_CONFIG_DEFAULT_OVERRIDE]
-                }] }] });
-
-const focusTrapModule = FocusTrapModule.forRoot();
 class ModalModule {
+    // @deprecated method not required anymore, will be deleted in v19.0.0
     static forRoot() {
         return {
             ngModule: ModalModule,
             providers: [BsModalService, ComponentLoaderFactory, PositioningService]
         };
     }
+    // @deprecated method not required anymore, will be deleted in v19.0.0
     static forChild() {
         return {
             ngModule: ModalModule,
             providers: [BsModalService, ComponentLoaderFactory, PositioningService]
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: ModalModule, declarations: [ModalBackdropComponent,
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "18.0.1", ngImport: i0, type: ModalModule, imports: [FocusTrapModule,
+            ModalBackdropComponent,
             ModalDirective,
-            ModalContainerComponent], imports: [FocusTrapModule], exports: [ModalBackdropComponent, ModalDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalModule, imports: [FocusTrapModule] }); }
+            ModalContainerComponent], exports: [ModalBackdropComponent, ModalDirective] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalModule, imports: [FocusTrapModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: ModalModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: ModalModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [FocusTrapModule],
-                    declarations: [
+                    imports: [
+                        FocusTrapModule,
                         ModalBackdropComponent,
                         ModalDirective,
                         ModalContainerComponent

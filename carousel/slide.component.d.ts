@@ -18,5 +18,5 @@ export declare class SlideComponent implements OnInit, OnDestroy {
     /** Fires changes in container collection after removing of this slide instance */
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<SlideComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<SlideComponent, "slide", never, { "active": { "alias": "active"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SlideComponent, "slide", never, { "active": { "alias": "active"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

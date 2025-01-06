@@ -63,5 +63,5 @@ export declare class TypeaheadContainerComponent implements OnDestroy {
     private scrollToBottom;
     private scrollToTop;
     static ɵfac: i0.ɵɵFactoryDeclaration<TypeaheadContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TypeaheadContainerComponent, "typeahead-container", never, {}, { "activeChangeEvent": "activeChange"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TypeaheadContainerComponent, "typeahead-container", never, {}, { "activeChangeEvent": "activeChange"; }, never, never, true, never>;
 }

@@ -7,5 +7,5 @@ export declare class NgTranscludeDirective {
     get ngTransclude(): TemplateRef<any> | undefined;
     constructor(viewRef: ViewContainerRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<NgTranscludeDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<NgTranscludeDirective, "[ngTransclude]", never, { "ngTransclude": { "alias": "ngTransclude"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<NgTranscludeDirective, "[ngTransclude]", never, { "ngTransclude": { "alias": "ngTransclude"; "required": false; }; }, {}, never, never, true, never>;
 }

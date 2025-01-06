@@ -26,6 +26,6 @@ export declare class ButtonCheckboxDirective implements ControlValueAccessor, On
     registerOnChange(fn: () => void): void;
     registerOnTouched(fn: () => void): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ButtonCheckboxDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonCheckboxDirective, "[btnCheckbox]", never, { "btnCheckboxTrue": { "alias": "btnCheckboxTrue"; "required": false; }; "btnCheckboxFalse": { "alias": "btnCheckboxFalse"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonCheckboxDirective, "[btnCheckbox]", never, { "btnCheckboxTrue": { "alias": "btnCheckboxTrue"; "required": false; }; "btnCheckboxFalse": { "alias": "btnCheckboxFalse"; "required": false; }; }, {}, never, never, true, never>;
 }
 export {};

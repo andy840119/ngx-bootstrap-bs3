@@ -29,5 +29,5 @@ export declare class BsDaterangepickerInputDirective implements ControlValueAcce
     onBlur(): void;
     hide(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDaterangepickerInputDirective, [{ host: true; }, null, null, null, null]>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDaterangepickerInputDirective, "input[bsDaterangepicker]", never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDaterangepickerInputDirective, "input[bsDaterangepicker]", never, {}, {}, never, never, true, never>;
 }

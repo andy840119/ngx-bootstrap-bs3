@@ -1261,7 +1261,7 @@ const defaultCalendar = {
 
 const defaultInvalidDate = 'Invalid date';
 const defaultLocaleWeek = {
-    dow: 0,
+    dow: 0, // Sunday is the first day of the week.
     doy: 6 // The week that contains Jan 1st is the first week of the year.
 };
 const defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
@@ -2222,11 +2222,11 @@ function monthsToDays(month) {
 
 let round = Math.round;
 const thresholds = {
-    ss: 44,
-    s: 45,
-    m: 45,
-    h: 22,
-    d: 26,
+    ss: 44, // a few seconds to seconds
+    s: 45, // seconds to minute
+    m: 45, // minutes to hour
+    h: 22, // hours to day
+    d: 26, // days to month
     M: 11 // months to year
 };
 // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
@@ -3456,7 +3456,7 @@ function setISODayOfWeek(date, input, opts = {}) {
 //! author : Abdel Said: https://github.com/abdelsaid
 //! author : Ahmed Elkhatib
 //! author : forabi https://github.com/forabi
-const symbolMap$1 = {
+const symbolMap$2 = {
     1: '١',
     2: '٢',
     3: '٣',
@@ -3468,7 +3468,7 @@ const symbolMap$1 = {
     9: '٩',
     0: '٠'
 };
-const numberMap$1 = {
+const numberMap$2 = {
     '١': '1',
     '٢': '2',
     '٣': '3',
@@ -3480,10 +3480,10 @@ const numberMap$1 = {
     '٩': '9',
     '٠': '0'
 };
-const pluralForm = function (num) {
+const pluralForm$1 = function (num) {
     return num === 0 ? 0 : num === 1 ? 1 : num === 2 ? 2 : num % 100 >= 3 && num % 100 <= 10 ? 3 : num % 100 >= 11 ? 4 : 5;
 };
-const plurals = {
+const plurals$1 = {
     s: ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
     m: ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
     h: ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
@@ -3491,17 +3491,17 @@ const plurals = {
     M: ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
     y: ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
 };
-const pluralize = function (u) {
+const pluralize$1 = function (u) {
     return function (num, withoutSuffix) {
-        const f = pluralForm(num);
-        let str = plurals[u][pluralForm(num)];
+        const f = pluralForm$1(num);
+        let str = plurals$1[u][pluralForm$1(num)];
         if (f === 2) {
             str = str[withoutSuffix ? 0 : 1];
         }
         return str.replace(/%d/i, num.toString());
     };
 };
-const months$2 = [
+const months$3 = [
     'يناير',
     'فبراير',
     'مارس',
@@ -3517,8 +3517,8 @@ const months$2 = [
 ];
 const arLocale = {
     abbr: 'ar',
-    months: months$2,
-    monthsShort: months$2,
+    months: months$3,
+    monthsShort: months$3,
     weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
     weekdaysShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
     weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
@@ -3554,31 +3554,31 @@ const arLocale = {
     relativeTime: {
         future: 'بعد %s',
         past: 'منذ %s',
-        s: pluralize('s'),
-        ss: pluralize('s'),
-        m: pluralize('m'),
-        mm: pluralize('m'),
-        h: pluralize('h'),
-        hh: pluralize('h'),
-        d: pluralize('d'),
-        dd: pluralize('d'),
-        M: pluralize('M'),
-        MM: pluralize('M'),
-        y: pluralize('y'),
-        yy: pluralize('y')
+        s: pluralize$1('s'),
+        ss: pluralize$1('s'),
+        m: pluralize$1('m'),
+        mm: pluralize$1('m'),
+        h: pluralize$1('h'),
+        hh: pluralize$1('h'),
+        d: pluralize$1('d'),
+        dd: pluralize$1('d'),
+        M: pluralize$1('M'),
+        MM: pluralize$1('M'),
+        y: pluralize$1('y'),
+        yy: pluralize$1('y')
     },
     preparse(str) {
         return str.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
-            return numberMap$1[match];
+            return numberMap$2[match];
         }).replace(/،/g, ',');
     },
     postformat(str) {
         return str.replace(/\d/g, function (match) {
-            return symbolMap$1[match];
+            return symbolMap$2[match];
         }).replace(/,/g, '،');
     },
     week: {
-        dow: 6,
+        dow: 6, // Saturday is the first day of the week.
         doy: 12 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -3668,7 +3668,7 @@ const bgLocale = {
         }
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -3754,7 +3754,7 @@ const caLocale = {
         return num + output;
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -3762,7 +3762,7 @@ const caLocale = {
 //! moment.js locale configuration
 //! locale : Czech [cs]
 //! author : petrbela : https://github.com/petrbela
-const months$1 = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split('_');
+const months$2 = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split('_');
 const monthsShort$6 = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_');
 function plural$4(num) {
     return (num > 1) && (num < 5) && (~~(num / 10) !== 1);
@@ -3834,7 +3834,7 @@ function translate$6(num, withoutSuffix, key, isFuture) {
 }
 const csLocale = {
     abbr: 'cs',
-    months: months$1,
+    months: months$2,
     monthsShort: monthsShort$6,
     monthsParse: (function (months, monthsShort) {
         let i, _monthsParse = [];
@@ -3843,7 +3843,7 @@ const csLocale = {
             _monthsParse[i] = new RegExp('^' + months[i] + '$|^' + monthsShort[i] + '$', 'i');
         }
         return _monthsParse;
-    }(months$1, monthsShort$6)),
+    }(months$2, monthsShort$6)),
     shortMonthsParse: (function (monthsShort) {
         let i, _shortMonthsParse = [];
         for (i = 0; i < 12; i++) {
@@ -3857,7 +3857,7 @@ const csLocale = {
             _longMonthsParse[i] = new RegExp('^' + months[i] + '$', 'i');
         }
         return _longMonthsParse;
-    }(months$1)),
+    }(months$2)),
     weekdays: 'neděle_pondělí_úterý_středa_čtvrtek_pátek_sobota'.split('_'),
     weekdaysShort: 'ne_po_út_st_čt_pá_so'.split('_'),
     weekdaysMin: 'ne_po_út_st_čt_pá_so'.split('_'),
@@ -3928,7 +3928,7 @@ const csLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -3977,7 +3977,7 @@ const daLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4044,7 +4044,7 @@ const deLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4101,7 +4101,7 @@ const enGbLocale = {
         return num + output;
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4181,7 +4181,7 @@ const esDoLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4260,7 +4260,7 @@ const esLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4333,7 +4333,7 @@ const esPrLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 0,
+        dow: 0, // Sunday is the first day of the week.
         doy: 6 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -4407,7 +4407,7 @@ const esUsLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 0,
+        dow: 0, // Sunday is the first day of the week.
         doy: 6 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -4476,7 +4476,7 @@ const etLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4572,7 +4572,7 @@ const fiLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4644,7 +4644,76 @@ const frLocale = {
         }
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
+        doy: 4 // The week that contains Jan 4th is the first week of the year.
+    }
+};
+
+//! moment.js locale configuration
+//! locale : French Canadian [fr-ca]
+//! author : Ali Hasan : https://github.com/alihasan00
+const frCaLocale = {
+    abbr: 'fr-ca',
+    months: 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
+    monthsShort: 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
+    monthsParseExact: true,
+    weekdays: 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
+    weekdaysShort: 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
+    weekdaysMin: 'di_lu_ma_me_je_ve_sa'.split('_'),
+    weekdaysParseExact: true,
+    longDateFormat: {
+        LT: 'HH:mm',
+        LTS: 'HH:mm:ss',
+        L: 'YYYY-MM-DD',
+        LL: 'D MMMM YYYY',
+        LLL: 'D MMMM YYYY HH:mm',
+        LLLL: 'dddd D MMMM YYYY HH:mm'
+    },
+    calendar: {
+        sameDay: '[Aujourd’hui à] LT',
+        nextDay: '[Demain à] LT',
+        nextWeek: 'dddd [à] LT',
+        lastDay: '[Hier à] LT',
+        lastWeek: 'dddd [dernier à] LT',
+        sameElse: 'L'
+    },
+    relativeTime: {
+        future: 'dans %s',
+        past: 'il y a %s',
+        s: 'quelques secondes',
+        ss: '%d secondes',
+        m: 'une minute',
+        mm: '%d minutes',
+        h: 'une heure',
+        hh: '%d heures',
+        d: 'un jour',
+        dd: '%d jours',
+        M: 'un mois',
+        MM: '%d mois',
+        y: 'un an',
+        yy: '%d ans'
+    },
+    dayOfMonthOrdinalParse: /\d{1,2}(er|e|)/,
+    ordinal(_num, period) {
+        const num = Number(_num);
+        switch (period) {
+            case 'D':
+                return num + (num === 1 ? 'er' : '');
+            // Words with masculine grammatical gender: mois, trimestre, jour
+            default:
+            case 'M':
+            case 'Q':
+            case 'DDD':
+            case 'd':
+                return num + (num === 1 ? 'er' : 'e');
+            // Words with feminine grammatical gender: semaine
+            case 'w':
+            case 'W':
+                return num + (num === 1 ? 're' : 'e');
+        }
+    },
+    week: {
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4723,7 +4792,7 @@ const glLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -4825,7 +4894,7 @@ const heLocale = {
 //! moment.js locale configuration
 //! locale : Hindi [hi]
 //! author : Mayank Singhal : https://github.com/mayanksinghal
-let symbolMap = {
+let symbolMap$1 = {
     1: '१',
     2: '२',
     3: '३',
@@ -4836,7 +4905,7 @@ let symbolMap = {
     8: '८',
     9: '९',
     0: '०'
-}, numberMap = {
+}, numberMap$1 = {
     '१': '1',
     '२': '2',
     '३': '3',
@@ -4890,12 +4959,12 @@ const hiLocale = {
     },
     preparse(str) {
         return str.replace(/[१२३४५६७८९०]/g, function (match) {
-            return numberMap[match];
+            return numberMap$1[match];
         });
     },
     postformat(str) {
         return str.replace(/\d/g, function (match) {
-            return symbolMap[match];
+            return symbolMap$1[match];
         });
     },
     // Hindi notation for meridiems are quite fuzzy in practice. While there exists
@@ -4936,7 +5005,7 @@ const hiLocale = {
         }
     },
     week: {
-        dow: 0,
+        dow: 0, // Sunday is the first day of the week.
         doy: 6 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -5035,7 +5104,7 @@ const huLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5053,7 +5122,7 @@ const hrLocale = {
     longDateFormat: {
         LT: 'HH:mm',
         LTS: 'HH:mm:ss',
-        L: 'DD/MM/YYYY',
+        L: 'DD.MM.YYYY.',
         LL: 'D MMMM YYYY',
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
@@ -5093,7 +5162,7 @@ const hrLocale = {
         return num + output;
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5171,7 +5240,7 @@ const idLocale = {
         yy: '%d tahun'
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -5231,7 +5300,7 @@ const itLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}º/,
     ordinal: '%dº',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5461,7 +5530,7 @@ const kkLocale = {
         return _num + (suffixes$1[_num] || suffixes$1[a] || suffixes$1[b]);
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 7th is the first week of the year.
     }
 };
@@ -5645,7 +5714,7 @@ const ltLocale = {
         return num + '-oji';
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5697,7 +5766,7 @@ const lvLocale = {
         return num + '.';
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5844,7 +5913,7 @@ const nbLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5920,7 +5989,7 @@ const nlBeLocale = {
         return num + ((num === 1 || num === 8 || num >= 20) ? 'ste' : 'de');
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -5995,7 +6064,7 @@ const nlLocale = {
         return num + ((num === 1 || num === 8 || num >= 20) ? 'ste' : 'de');
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6115,7 +6184,7 @@ const plLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6232,7 +6301,7 @@ const roLocale = {
         yy: relativeTimeWithPlural$2
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -6407,7 +6476,7 @@ const ruLocale = {
         }
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6415,7 +6484,7 @@ const ruLocale = {
 //! moment.js locale configuration
 //! locale : Slovak [sk]
 //! author : Jozef Pažin : https://github.com/atiris
-const months = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split('_');
+const months$1 = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split('_');
 const monthsShort = 'jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec'.split('_');
 function plural$1(num) {
     return (num > 1) && (num < 5) && (~~(num / 10) !== 1);
@@ -6487,7 +6556,7 @@ function translate(num, withoutSuffix, key, isFuture) {
 }
 const skLocale = {
     abbr: 'sk',
-    months,
+    months: months$1,
     monthsShort,
     weekdays: 'nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota'.split('_'),
     weekdaysShort: 'ne_po_ut_st_št_pi_so'.split('_'),
@@ -6559,7 +6628,7 @@ const skLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6737,7 +6806,7 @@ const slLocale = {
     dayOfMonthOrdinalParse: /\d{1,2}\./,
     ordinal: '%d.',
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -6784,10 +6853,10 @@ const sqLocale = {
         y: 'një vit',
         yy: '%d vite'
     },
-    dayOfMonthOrdinalParse: /\d{1,2}\./,
-    ordinal: '%d.',
+    dayOfMonthOrdinalParse: /\d{1,2}\./, // need clarification
+    ordinal: '%d.', // need clarification
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6846,7 +6915,7 @@ const svLocale = {
         return num + output;
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
     }
 };
@@ -6860,7 +6929,7 @@ const thLocale = {
     monthsShort: 'ม.ค._ก.พ._มี.ค._เม.ย._พ.ค._มิ.ย._ก.ค._ส.ค._ก.ย._ต.ค._พ.ย._ธ.ค.'.split('_'),
     monthsParseExact: true,
     weekdays: 'อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัสบดี_ศุกร์_เสาร์'.split('_'),
-    weekdaysShort: 'อา._จ._อ._พ._พฤ._ศ._ส.'.split('_'),
+    weekdaysShort: 'อา._จ._อ._พ._พฤ._ศ._ส.'.split('_'), // yes, three characters difference
     weekdaysMin: 'อา._จ._อ._พ._พฤ._ศ._ส.'.split('_'),
     weekdaysParseExact: true,
     longDateFormat: {
@@ -7055,7 +7124,7 @@ const trLocale = {
         return num + (suffixes[a] || suffixes[b] || suffixes[c]);
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -7196,7 +7265,7 @@ const ukLocale = {
         }
     },
     week: {
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 7 // The week that contains Jan 1st is the first week of the year.
     }
 };
@@ -7266,7 +7335,7 @@ const viLocale = {
         return '' + _num;
     },
     week: {
-        dow: 1,
+        dow: 1, // Thứ Hai là ngày đầu tuần.
         doy: 4 // Tuần chứa ngày 4 tháng 1 là tuần đầu tiên trong năm.
     }
 };
@@ -7375,8 +7444,138 @@ const zhCnLocale = {
     },
     week: {
         // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
-        dow: 1,
+        dow: 1, // Monday is the first day of the week.
         doy: 4 // The week that contains Jan 4th is the first week of the year.
+    }
+};
+
+//! moment.js locale configuration
+//! locale : Persian [fa]
+//! author : Meysam Bahadori: https://github.com/MeysamBahadori
+const symbolMap = {
+    1: '١',
+    2: '٢',
+    3: '٣',
+    4: '٤',
+    5: '٥',
+    6: '٦',
+    7: '٧',
+    8: '٨',
+    9: '٩',
+    0: '٠'
+};
+const numberMap = {
+    '١': '1',
+    '٢': '2',
+    '٣': '3',
+    '٤': '4',
+    '٥': '5',
+    '٦': '6',
+    '٧': '7',
+    '٨': '8',
+    '٩': '9',
+    '٠': '0'
+};
+const pluralForm = function (num) {
+    return num === 0 ? 0 : num === 1 ? 1 : num === 2 ? 2 : num % 100 >= 3 && num % 100 <= 10 ? 3 : num % 100 >= 11 ? 4 : 5;
+};
+var plurals = {
+    s: ['کمتر از یک ثانیه', 'یک ثانیه', ['دو ثانیه', 'دو ثانیه'], '%d ثانیه', '%d ثانیه', '%d ثانیه'],
+    m: ['کمتر از یک دقیقه', 'یک دقیقه', ['دو دقیقه', 'دو دقیقه'], '%d دقیقه', '%d دقیقه', '%d دقیقه'],
+    h: ['کمتر از یک ساعت', 'یک ساعت', ['دو ساعت', 'دو ساعت'], '%d ساعت', '%d ساعت', '%d ساعت'],
+    d: ['کمتر از یک روز', 'یک روز', ['دو روز', 'دو روز'], '%d روز', '%d روز', '%d روز'],
+    M: ['کمتر از یک ماه', 'یک ماه', ['دو ماه', 'دو ماه'], '%d ماه', '%d ماه', '%d ماه'],
+    y: ['کمتر از یک سال', 'یک سال', ['دو سال', 'دو سال'], '%d سال', '%d سال', '%d سال']
+};
+const pluralize = function (u) {
+    return function (num, withoutSuffix) {
+        const f = pluralForm(num);
+        let str = plurals[u][pluralForm(num)];
+        if (f === 2) {
+            str = str[withoutSuffix ? 0 : 1];
+        }
+        return str.replace(/%d/i, num.toString());
+    };
+};
+const months = [
+    'ژانویه',
+    'فوریه',
+    'مارس',
+    'آوریل',
+    'می',
+    'ژوئن',
+    'جولای',
+    'آگوست',
+    'سپتامبر',
+    'اکتبر',
+    'نوامبر',
+    'دسامبر'
+];
+const faLocale = {
+    abbr: 'fa',
+    months: months,
+    monthsShort: months,
+    weekdays: 'یکشنبه_دوشنبه_سه شنبه_چهارشنبه_پنج شنبه_جمعه_شنبه'.split('_'),
+    weekdaysShort: 'یکشنبه_دو‌شنبه_سه‌شنبه_چهار‌شنبه_پنج‌شنبه_جمعه_شنبه'.split('_'),
+    weekdaysMin: 'ی_د_س_چ_پ_ج_ش'.split('_'),
+    weekdaysParseExact: true,
+    longDateFormat: {
+        LT: 'HH:mm',
+        LTS: 'HH:mm:ss',
+        L: 'D/\u200FM/\u200FYYYY',
+        LL: 'D MMMM YYYY',
+        LLL: 'D MMMM YYYY HH:mm',
+        LLLL: 'dddd D MMMM YYYY HH:mm'
+    },
+    meridiemParse: /ص|م/,
+    isPM(input) {
+        return 'م' === input;
+    },
+    meridiem(hour, minute, isLower) {
+        if (hour < 12) {
+            return 'ص';
+        }
+        else {
+            return 'م';
+        }
+    },
+    calendar: {
+        sameDay: '[امروز در ساعت] LT',
+        nextDay: '[فردا در ساعت] LT',
+        nextWeek: 'dddd [در ساعت] LT',
+        lastDay: '[دیروز در ساعت] LT',
+        lastWeek: 'dddd [در ساعت] LT',
+        sameElse: 'L'
+    },
+    relativeTime: {
+        future: 'بعد %s',
+        past: 'پیش %s',
+        s: pluralize('s'),
+        ss: pluralize('s'),
+        m: pluralize('m'),
+        mm: pluralize('m'),
+        h: pluralize('h'),
+        hh: pluralize('h'),
+        d: pluralize('d'),
+        dd: pluralize('d'),
+        M: pluralize('M'),
+        MM: pluralize('M'),
+        y: pluralize('y'),
+        yy: pluralize('y')
+    },
+    preparse(str) {
+        return str.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
+            return numberMap[match];
+        }).replace(/،/g, ',');
+    },
+    postformat(str) {
+        return str.replace(/\d/g, function (match) {
+            return symbolMap[match];
+        }).replace(/,/g, '،');
+    },
+    week: {
+        dow: 6, // Saturday is the first day of the week.
+        doy: 80 // The week that contains March 21th is the first week of the year.
     }
 };
 
@@ -7384,5 +7583,5 @@ const zhCnLocale = {
  * Generated bundle index. Do not edit.
  */
 
-export { add, arLocale, bgLocale, caLocale, csLocale, daLocale, deLocale, defineLocale, enGbLocale, endOf, esDoLocale, esLocale, esPrLocale, esUsLocale, etLocale, fiLocale, formatDate, frLocale, getDay, getFirstDayOfMonth, getFullYear, getLocale, getMonth, getSetGlobalLocale, glLocale, heLocale, hiLocale, hrLocale, huLocale, idLocale, isAfter, isArray, isBefore, isDate, isDateValid, isDisabledDay, isFirstDayOfWeek, isSame, isSameDay$1 as isSameDay, isSameMonth, isSameYear, itLocale, jaLocale, kaLocale, kkLocale, koLocale, listLocales, ltLocale, lvLocale, mnLocale, nbLocale, nlBeLocale, nlLocale, parseDate, plLocale, ptBrLocale, roLocale, ruLocale, setFullDate, shiftDate, skLocale, slLocale, sqLocale, startOf, subtract, svLocale, thBeLocale, thLocale, trLocale, ukLocale, updateLocale, utcAsLocal, viLocale, zhCnLocale };
+export { add, arLocale, bgLocale, caLocale, csLocale, daLocale, deLocale, defineLocale, enGbLocale, endOf, esDoLocale, esLocale, esPrLocale, esUsLocale, etLocale, faLocale, fiLocale, formatDate, frCaLocale, frLocale, getDay, getFirstDayOfMonth, getFullYear, getLocale, getMonth, getSetGlobalLocale, glLocale, heLocale, hiLocale, hrLocale, huLocale, idLocale, isAfter, isArray, isBefore, isDate, isDateValid, isDisabledDay, isFirstDayOfWeek, isSame, isSameDay$1 as isSameDay, isSameMonth, isSameYear, itLocale, jaLocale, kaLocale, kkLocale, koLocale, listLocales, ltLocale, lvLocale, mnLocale, nbLocale, nlBeLocale, nlLocale, parseDate, plLocale, ptBrLocale, roLocale, ruLocale, setFullDate, shiftDate, skLocale, slLocale, sqLocale, startOf, subtract, svLocale, thBeLocale, thLocale, trLocale, ukLocale, updateLocale, utcAsLocal, viLocale, zhCnLocale };
 //# sourceMappingURL=ngx-bootstrap-chronos.mjs.map

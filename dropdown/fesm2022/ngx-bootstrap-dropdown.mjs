@@ -6,9 +6,7 @@ import { ComponentLoaderFactory } from 'ngx-bootstrap/component-loader';
 import { isBs3 } from 'ngx-bootstrap/utils';
 import * as i2 from '@angular/animations';
 import { style, animate } from '@angular/animations';
-import * as i3 from '@angular/common';
-import { CommonModule } from '@angular/common';
-import { PositioningService } from 'ngx-bootstrap/positioning';
+import { NgClass } from '@angular/common';
 
 /** Default dropdown configuration */
 class BsDropdownConfig {
@@ -22,10 +20,10 @@ class BsDropdownConfig {
         /** value true of stopOnClickPropagation allows event stopPropagation*/
         this.stopOnClickPropagation = false;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownConfig, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownConfig, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownConfig, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownConfig, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownConfig, decorators: [{
             type: Injectable,
             args: [{
                     providedIn: 'root'
@@ -47,10 +45,10 @@ class BsDropdownState {
             this.resolveDropdownMenu = resolve;
         });
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownState, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownState, providedIn: 'platform' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownState, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownState, providedIn: 'platform' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownState, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownState, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'platform' }]
         }], ctorParameters: () => [] });
@@ -104,20 +102,22 @@ class BsDropdownContainerComponent {
     ngOnDestroy() {
         this._subscription.unsubscribe();
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownContainerComponent, deps: [{ token: BsDropdownState }, { token: i0.ChangeDetectorRef }, { token: i0.Renderer2 }, { token: i0.ElementRef }, { token: i2.AnimationBuilder }], target: i0.ɵɵFactoryTarget.Component }); }
-    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "17.0.4", type: BsDropdownContainerComponent, selector: "bs-dropdown-container", host: { styleAttribute: "display:block;position: absolute;z-index: 1040" }, ngImport: i0, template: `
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownContainerComponent, deps: [{ token: BsDropdownState }, { token: i0.ChangeDetectorRef }, { token: i0.Renderer2 }, { token: i0.ElementRef }, { token: i2.AnimationBuilder }], target: i0.ɵɵFactoryTarget.Component }); }
+    static { this.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "18.0.1", type: BsDropdownContainerComponent, isStandalone: true, selector: "bs-dropdown-container", host: { styleAttribute: "display:block;position: absolute;z-index: 1040" }, ngImport: i0, template: `
     <div [class.dropup]="direction === 'up'"
          [ngClass]="{dropdown: direction === 'down'}"
          [class.show]="isOpen"
          [class.open]="isOpen"><ng-content></ng-content>
     </div>
-  `, isInline: true, dependencies: [{ kind: "directive", type: i3.NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush }); }
+  `, isInline: true, dependencies: [{ kind: "directive", type: NgClass, selector: "[ngClass]", inputs: ["class", "ngClass"] }], changeDetection: i0.ChangeDetectionStrategy.OnPush }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownContainerComponent, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownContainerComponent, decorators: [{
             type: Component,
             args: [{
                     selector: 'bs-dropdown-container',
                     changeDetection: ChangeDetectionStrategy.OnPush,
+                    standalone: true,
+                    imports: [NgClass],
                     // eslint-disable-next-line @angular-eslint/no-host-metadata-property
                     host: {
                         style: 'display:block;position: absolute;z-index: 1040'
@@ -128,7 +128,7 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
          [class.show]="isOpen"
          [class.open]="isOpen"><ng-content></ng-content>
     </div>
-  `
+  `,
                 }]
         }], ctorParameters: () => [{ type: BsDropdownState }, { type: i0.ChangeDetectorRef }, { type: i0.Renderer2 }, { type: i0.ElementRef }, { type: i2.AnimationBuilder }] });
 
@@ -418,15 +418,16 @@ class BsDropdownDirective {
             this._renderer.removeStyle(this._inlinedMenu.rootNodes[0], 'bottom');
         }
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownDirective, deps: [{ token: i0.ElementRef }, { token: i0.Renderer2 }, { token: i0.ViewContainerRef }, { token: i1.ComponentLoaderFactory }, { token: BsDropdownState }, { token: BsDropdownConfig }, { token: i2.AnimationBuilder }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: BsDropdownDirective, selector: "[bsDropdown], [dropdown]", inputs: { placement: "placement", triggers: "triggers", container: "container", dropup: "dropup", autoClose: "autoClose", isAnimated: "isAnimated", insideClick: "insideClick", isDisabled: "isDisabled", isOpen: "isOpen" }, outputs: { isOpenChange: "isOpenChange", onShown: "onShown", onHidden: "onHidden" }, host: { listeners: { "keydown.arrowDown": "navigationClick($event)", "keydown.arrowUp": "navigationClick($event)" }, properties: { "class.dropup": "dropup", "class.open": "isOpen", "class.show": "isOpen && isBs4" } }, providers: [BsDropdownState], exportAs: ["bs-dropdown"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownDirective, deps: [{ token: i0.ElementRef }, { token: i0.Renderer2 }, { token: i0.ViewContainerRef }, { token: i1.ComponentLoaderFactory }, { token: BsDropdownState }, { token: BsDropdownConfig }, { token: i2.AnimationBuilder }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "18.0.1", type: BsDropdownDirective, isStandalone: true, selector: "[bsDropdown], [dropdown]", inputs: { placement: "placement", triggers: "triggers", container: "container", dropup: "dropup", autoClose: "autoClose", isAnimated: "isAnimated", insideClick: "insideClick", isDisabled: "isDisabled", isOpen: "isOpen" }, outputs: { isOpenChange: "isOpenChange", onShown: "onShown", onHidden: "onHidden" }, host: { listeners: { "keydown.arrowDown": "navigationClick($event)", "keydown.arrowUp": "navigationClick($event)" }, properties: { "class.dropup": "dropup", "class.open": "isOpen", "class.show": "isOpen && isBs4" } }, providers: [BsDropdownState, ComponentLoaderFactory, BsDropdownConfig], exportAs: ["bs-dropdown"], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[bsDropdown], [dropdown]',
                     exportAs: 'bs-dropdown',
-                    providers: [BsDropdownState],
+                    providers: [BsDropdownState, ComponentLoaderFactory, BsDropdownConfig],
+                    standalone: true,
                     // eslint-disable-next-line @angular-eslint/no-host-metadata-property
                     host: {
                         '[class.dropup]': 'dropup',
@@ -473,14 +474,15 @@ class BsDropdownMenuDirective {
             viewContainer: _viewContainer
         });
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownMenuDirective, deps: [{ token: BsDropdownState }, { token: i0.ViewContainerRef }, { token: i0.TemplateRef }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: BsDropdownMenuDirective, selector: "[bsDropdownMenu],[dropdownMenu]", exportAs: ["bs-dropdown-menu"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownMenuDirective, deps: [{ token: BsDropdownState }, { token: i0.ViewContainerRef }, { token: i0.TemplateRef }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "18.0.1", type: BsDropdownMenuDirective, isStandalone: true, selector: "[bsDropdownMenu],[dropdownMenu]", exportAs: ["bs-dropdown-menu"], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownMenuDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownMenuDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[bsDropdownMenu],[dropdownMenu]',
-                    exportAs: 'bs-dropdown-menu'
+                    exportAs: 'bs-dropdown-menu',
+                    standalone: true
                 }]
         }], ctorParameters: () => [{ type: BsDropdownState }, { type: i0.ViewContainerRef }, { type: i0.TemplateRef }] });
 
@@ -541,10 +543,10 @@ class BsDropdownToggleDirective {
             sub.unsubscribe();
         }
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownToggleDirective, deps: [{ token: i0.ChangeDetectorRef }, { token: BsDropdownDirective }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: BsDropdownState }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: BsDropdownToggleDirective, selector: "[bsDropdownToggle],[dropdownToggle]", host: { listeners: { "click": "onClick($event)" }, properties: { "attr.aria-haspopup": "true", "attr.disabled": "this.isDisabled", "attr.aria-expanded": "this.isOpen" } }, exportAs: ["bs-dropdown-toggle"], ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownToggleDirective, deps: [{ token: i0.ChangeDetectorRef }, { token: BsDropdownDirective }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: BsDropdownState }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "18.0.1", type: BsDropdownToggleDirective, isStandalone: true, selector: "[bsDropdownToggle],[dropdownToggle]", host: { listeners: { "click": "onClick($event)" }, properties: { "attr.aria-haspopup": "true", "attr.disabled": "this.isDisabled", "attr.aria-expanded": "this.isOpen" } }, exportAs: ["bs-dropdown-toggle"], ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownToggleDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownToggleDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[bsDropdownToggle],[dropdownToggle]',
@@ -552,7 +554,8 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
                     // eslint-disable-next-line @angular-eslint/no-host-metadata-property
                     host: {
                         '[attr.aria-haspopup]': 'true'
-                    }
+                    },
+                    standalone: true
                 }]
         }], ctorParameters: () => [{ type: i0.ChangeDetectorRef }, { type: BsDropdownDirective }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: BsDropdownState }], propDecorators: { isDisabled: [{
                 type: HostBinding,
@@ -566,34 +569,30 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
             }] } });
 
 class BsDropdownModule {
+    // @deprecated method not required anymore, will be deleted in v19.0.0
     static forRoot() {
         return {
             ngModule: BsDropdownModule,
-            providers: [
-                ComponentLoaderFactory,
-                PositioningService,
-                BsDropdownState
-            ]
+            providers: []
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownModule, declarations: [BsDropdownMenuDirective,
-            BsDropdownToggleDirective,
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownModule, imports: [BsDropdownDirective,
             BsDropdownContainerComponent,
-            BsDropdownDirective], imports: [CommonModule], exports: [BsDropdownMenuDirective,
+            BsDropdownMenuDirective,
+            BsDropdownToggleDirective], exports: [BsDropdownMenuDirective,
             BsDropdownToggleDirective,
             BsDropdownDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownModule, imports: [CommonModule] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownModule }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: BsDropdownModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: BsDropdownModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [CommonModule],
-                    declarations: [
-                        BsDropdownMenuDirective,
-                        BsDropdownToggleDirective,
+                    imports: [
+                        BsDropdownDirective,
                         BsDropdownContainerComponent,
-                        BsDropdownDirective
+                        BsDropdownMenuDirective,
+                        BsDropdownToggleDirective
                     ],
                     exports: [
                         BsDropdownMenuDirective,

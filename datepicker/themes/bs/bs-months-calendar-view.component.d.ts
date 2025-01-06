@@ -12,5 +12,5 @@ export declare class BsMonthCalendarViewComponent {
     hoverMonth(cell: CalendarCellViewModel, isHovered: boolean): void;
     changeViewMode(event: BsDatepickerViewMode): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsMonthCalendarViewComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsMonthCalendarViewComponent, "bs-month-calendar-view", never, { "calendar": { "alias": "calendar"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; "onSelect": "onSelect"; "onHover": "onHover"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsMonthCalendarViewComponent, "bs-month-calendar-view", never, { "calendar": { "alias": "calendar"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; "onSelect": "onSelect"; "onHover": "onHover"; }, never, never, true, never>;
 }

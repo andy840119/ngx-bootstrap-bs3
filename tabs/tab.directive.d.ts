@@ -35,5 +35,5 @@ export declare class TabDirective implements OnInit, OnDestroy {
     ngOnInit(): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TabDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<TabDirective, "tab, [tab]", ["tab"], { "heading": { "alias": "heading"; "required": false; }; "id": { "alias": "id"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "removable": { "alias": "removable"; "required": false; }; "customClass": { "alias": "customClass"; "required": false; }; "active": { "alias": "active"; "required": false; }; }, { "selectTab": "selectTab"; "deselect": "deselect"; "removed": "removed"; }, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<TabDirective, "tab, [tab]", ["tab"], { "heading": { "alias": "heading"; "required": false; }; "id": { "alias": "id"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "removable": { "alias": "removable"; "required": false; }; "customClass": { "alias": "customClass"; "required": false; }; "active": { "alias": "active"; "required": false; }; }, { "selectTab": "selectTab"; "deselect": "deselect"; "removed": "removed"; }, never, never, true, never>;
 }

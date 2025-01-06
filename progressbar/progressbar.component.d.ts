@@ -19,5 +19,5 @@ export declare class ProgressbarComponent {
     _values?: BarValue[];
     constructor(config: ProgressbarConfig);
     static ɵfac: i0.ɵɵFactoryDeclaration<ProgressbarComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ProgressbarComponent, "progressbar", never, { "max": { "alias": "max"; "required": false; }; "animate": { "alias": "animate"; "required": false; }; "striped": { "alias": "striped"; "required": false; }; "type": { "alias": "type"; "required": false; }; "value": { "alias": "value"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ProgressbarComponent, "progressbar", never, { "max": { "alias": "max"; "required": false; }; "animate": { "alias": "animate"; "required": false; }; "striped": { "alias": "striped"; "required": false; }; "type": { "alias": "type"; "required": false; }; "value": { "alias": "value"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

@@ -10,5 +10,5 @@ export declare class BsDatepickerDayDecoratorComponent implements OnInit {
     constructor(_config: BsDatepickerConfig, _elRef: ElementRef, _renderer: Renderer2);
     ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerDayDecoratorComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerDayDecoratorComponent, "[bsDatepickerDayDecorator]", never, { "day": { "alias": "day"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerDayDecoratorComponent, "[bsDatepickerDayDecorator]", never, { "day": { "alias": "day"; "required": false; }; }, {}, never, never, true, never>;
 }

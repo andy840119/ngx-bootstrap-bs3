@@ -54,8 +54,8 @@ function addPackageToPackageJson(host, pkg, version) {
     return host;
 }
 exports.addPackageToPackageJson = addPackageToPackageJson;
-function createTestApp(runner, appOptions = {}) {
-    return __awaiter(this, void 0, void 0, function* () {
+function createTestApp(runner_1) {
+    return __awaiter(this, arguments, void 0, function* (runner, appOptions = {}) {
         const workspaceTree = yield runner.runExternalSchematic('@schematics/angular', 'workspace', {
             name: 'workspace',
             version: '8.2.0',
@@ -78,6 +78,10 @@ function removePackageJsonDependency(tree, dependencyName) {
 }
 exports.removePackageJsonDependency = removePackageJsonDependency;
 function addModuleImportToRootModule(host, moduleName, src, project) {
+    if ((0, ng_ast_utils_1.isStandaloneApp)(host, (0, project_main_file_1.getProjectMainFile)(project))) {
+        throw new schematics_1.SchematicsException(`ngx-bootstrap doesn't support moduleless approach if we couldn't find
+    your starting *.module.ts learn more here https://valor-software.com/ngx-bootstrap/#/documentation#installation`);
+    }
     const modulePath = (0, ng_ast_utils_1.getAppModulePath)(host, (0, project_main_file_1.getProjectMainFile)(project));
     const moduleSource = getSourceFile(host, modulePath);
     if (!moduleSource) {

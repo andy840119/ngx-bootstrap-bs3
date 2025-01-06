@@ -11,5 +11,5 @@ export declare class BsDatepickerInlineContainerComponent extends BsDatepickerCo
     get readonlyValue(): "" | null;
     constructor(_renderer: Renderer2, _config: BsDatepickerConfig, _store: BsDatepickerStore, _element: ElementRef, _actions: BsDatepickerActions, _effects: BsDatepickerEffects, _positioningService: PositioningService);
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerInlineContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerInlineContainerComponent, "bs-datepicker-inline-container", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerInlineContainerComponent, "bs-datepicker-inline-container", never, {}, {}, never, never, true, never>;
 }

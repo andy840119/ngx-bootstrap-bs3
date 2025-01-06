@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkComponentName = void 0;
+const schematics_1 = require("@angular-devkit/schematics");
 const tasks_1 = require("@angular-devkit/schematics/tasks");
 const ng_ast_utils_1 = require("@schematics/angular/utility/ng-ast-utils");
 const utils_1 = require("../utils");
@@ -79,6 +80,10 @@ exports.default = addBsToPackage;
 function addModuleOfComponent(project, host, context, componentName) {
     if (!project) {
         return;
+    }
+    if ((0, ng_ast_utils_1.isStandaloneApp)(host, (0, project_main_file_1.getProjectMainFile)(project))) {
+        throw new schematics_1.SchematicsException(`ngx-bootstrap doesn't support moduleless approach if we couldn't find
+    your starting *.module.ts learn more here https://valor-software.com/ngx-bootstrap/#/documentation#installation`);
     }
     const appModulePath = (0, ng_ast_utils_1.getAppModulePath)(host, (0, project_main_file_1.getProjectMainFile)(project));
     if (componentName && components[componentName]) {

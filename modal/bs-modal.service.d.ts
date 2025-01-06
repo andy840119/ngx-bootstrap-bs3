@@ -18,6 +18,7 @@ export declare class BsModalService {
     protected backdropRef?: ComponentRef<ModalBackdropComponent>;
     private _backdropLoader;
     private modalsCount;
+    private lastHiddenId;
     private lastDismissReason?;
     private loaders;
     private _renderer;

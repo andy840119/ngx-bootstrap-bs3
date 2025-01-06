@@ -1,5 +1,5 @@
 import * as i0 from '@angular/core';
-import { Injectable, PLATFORM_ID, Inject, Directive, Input, NgModule } from '@angular/core';
+import { PLATFORM_ID, Injectable, Inject, Directive, Input, NgModule } from '@angular/core';
 import { isPlatformBrowser, DOCUMENT, CommonModule } from '@angular/common';
 import { take } from 'rxjs/operators';
 
@@ -10,50 +10,10 @@ import { take } from 'rxjs/operators';
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/* eslint-disable */
-/** Injectable that ensures only the most recently enabled FocusTrap is active. */
-class FocusTrapManager {
-    constructor() {
-        // A stack of the FocusTraps on the page. Only the FocusTrap at the
-        // top of the stack is active.
-        this._focusTrapStack = [];
-    }
-    /**
-     * Disables the FocusTrap at the top of the stack, and then pushes
-     * the new FocusTrap onto the stack.
-     */
-    register(focusTrap) {
-        // Dedupe focusTraps that register multiple times.
-        this._focusTrapStack = this._focusTrapStack.filter((ft) => ft !== focusTrap);
-        let stack = this._focusTrapStack;
-        if (stack.length) {
-            stack[stack.length - 1]._disable();
-        }
-        stack.push(focusTrap);
-        focusTrap._enable();
-    }
-    /**
-     * Removes the FocusTrap from the stack, and activates the
-     * FocusTrap that is the new top of the stack.
-     */
-    deregister(focusTrap) {
-        focusTrap._disable();
-        const stack = this._focusTrapStack;
-        const i = stack.indexOf(focusTrap);
-        if (i !== -1) {
-            stack.splice(i, 1);
-            if (stack.length) {
-                stack[stack.length - 1]._enable();
-            }
-        }
-    }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, providedIn: 'root' }); }
+/** Coerces a data-bound value (typically a string) to a boolean. */
+function coerceBooleanProperty(value) {
+    return value != null && `${value}` !== 'false';
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapManager, decorators: [{
-            type: Injectable,
-            args: [{ providedIn: 'root' }]
-        }] });
 
 /**
  * @license
@@ -121,10 +81,10 @@ class Platform {
         /** Whether the current browser is Safari. */
         this.SAFARI = this.isBrowser && /safari/i.test(navigator.userAgent) && this.WEBKIT;
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: Platform, deps: [{ token: PLATFORM_ID }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: Platform, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: Platform, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: Platform, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }], ctorParameters: () => [{ type: Object, decorators: [{
@@ -265,10 +225,10 @@ class InteractivityChecker {
         return isPotentiallyFocusable(element) && !this.isDisabled(element) &&
             (config?.ignoreVisibility || this.isVisible(element));
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, deps: [{ token: Platform }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: InteractivityChecker, deps: [{ token: Platform }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: InteractivityChecker, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: InteractivityChecker, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: InteractivityChecker, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }], ctorParameters: () => [{ type: Platform }] });
@@ -376,10 +336,50 @@ function getWindow(node) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/** Coerces a data-bound value (typically a string) to a boolean. */
-function coerceBooleanProperty(value) {
-    return value != null && `${value}` !== 'false';
+/* eslint-disable */
+/** Injectable that ensures only the most recently enabled FocusTrap is active. */
+class FocusTrapManager {
+    constructor() {
+        // A stack of the FocusTraps on the page. Only the FocusTrap at the
+        // top of the stack is active.
+        this._focusTrapStack = [];
+    }
+    /**
+     * Disables the FocusTrap at the top of the stack, and then pushes
+     * the new FocusTrap onto the stack.
+     */
+    register(focusTrap) {
+        // Dedupe focusTraps that register multiple times.
+        this._focusTrapStack = this._focusTrapStack.filter((ft) => ft !== focusTrap);
+        let stack = this._focusTrapStack;
+        if (stack.length) {
+            stack[stack.length - 1]._disable();
+        }
+        stack.push(focusTrap);
+        focusTrap._enable();
+    }
+    /**
+     * Removes the FocusTrap from the stack, and activates the
+     * FocusTrap that is the new top of the stack.
+     */
+    deregister(focusTrap) {
+        focusTrap._disable();
+        const stack = this._focusTrapStack;
+        const i = stack.indexOf(focusTrap);
+        if (i !== -1) {
+            stack.splice(i, 1);
+            if (stack.length) {
+                stack[stack.length - 1]._enable();
+            }
+        }
+    }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapManager, deps: [], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapManager, providedIn: 'root' }); }
 }
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapManager, decorators: [{
+            type: Injectable,
+            args: [{ providedIn: 'root' }]
+        }] });
 
 /**
  * @license
@@ -684,10 +684,10 @@ class FocusTrapFactory {
     create(element, deferCaptureElements = false) {
         return new FocusTrap(element, this._checker, this._ngZone, this._document, deferCaptureElements);
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, deps: [{ token: InteractivityChecker }, { token: i0.NgZone }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable }); }
-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, providedIn: 'root' }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapFactory, deps: [{ token: InteractivityChecker }, { token: i0.NgZone }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapFactory, providedIn: 'root' }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapFactory, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapFactory, decorators: [{
             type: Injectable,
             args: [{ providedIn: 'root' }]
         }], ctorParameters: () => [{ type: InteractivityChecker }, { type: i0.NgZone }, { type: undefined, decorators: [{
@@ -753,14 +753,24 @@ class FocusTrapDirective {
         this._previouslyFocusedElement = this._document.activeElement;
         this.focusTrap.focusInitialElementWhenReady();
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapDirective, deps: [{ token: i0.ElementRef }, { token: FocusTrapFactory }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Directive }); }
-    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "17.0.4", type: FocusTrapDirective, selector: "[focusTrap]", inputs: { enabled: ["cdkTrapFocus", "enabled"], autoCapture: ["cdkTrapFocusAutoCapture", "autoCapture"] }, exportAs: ["focusTrap"], usesOnChanges: true, ngImport: i0 }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapDirective, deps: [{ token: i0.ElementRef }, { token: FocusTrapFactory }, { token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Directive }); }
+    static { this.ɵdir = i0.ɵɵngDeclareDirective({ minVersion: "14.0.0", version: "18.0.1", type: FocusTrapDirective, isStandalone: true, selector: "[focusTrap]", inputs: { enabled: ["cdkTrapFocus", "enabled"], autoCapture: ["cdkTrapFocusAutoCapture", "autoCapture"] }, providers: [
+            FocusTrapManager,
+            Platform,
+            InteractivityChecker
+        ], exportAs: ["focusTrap"], usesOnChanges: true, ngImport: i0 }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapDirective, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapDirective, decorators: [{
             type: Directive,
             args: [{
                     selector: '[focusTrap]',
-                    exportAs: 'focusTrap'
+                    exportAs: 'focusTrap',
+                    standalone: true,
+                    providers: [
+                        FocusTrapManager,
+                        Platform,
+                        InteractivityChecker
+                    ]
                 }]
         }], ctorParameters: () => [{ type: i0.ElementRef }, { type: FocusTrapFactory }, { type: undefined, decorators: [{
                     type: Inject,
@@ -774,25 +784,21 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImpor
             }] } });
 
 class FocusTrapModule {
+    // @deprecated method not required anymore, will be deleted in v19.0.0
     static forRoot() {
         return {
             ngModule: FocusTrapModule,
-            providers: [
-                FocusTrapManager,
-                Platform,
-                InteractivityChecker
-            ]
+            providers: []
         };
     }
-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, declarations: [FocusTrapDirective], imports: [CommonModule], exports: [FocusTrapDirective] }); }
-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, imports: [CommonModule] }); }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapModule, imports: [CommonModule, FocusTrapDirective], exports: [FocusTrapDirective] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapModule, imports: [CommonModule] }); }
 }
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "17.0.4", ngImport: i0, type: FocusTrapModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.1", ngImport: i0, type: FocusTrapModule, decorators: [{
             type: NgModule,
             args: [{
-                    imports: [CommonModule],
-                    declarations: [FocusTrapDirective],
+                    imports: [CommonModule, FocusTrapDirective],
                     exports: [FocusTrapDirective]
                 }]
         }] });

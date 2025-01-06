@@ -9,5 +9,5 @@ export declare class BsDatepickerNavigationViewComponent {
     navTo(down: boolean): void;
     view(viewMode: BsDatepickerViewMode): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerNavigationViewComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerNavigationViewComponent, "bs-datepicker-navigation-view", never, { "calendar": { "alias": "calendar"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerNavigationViewComponent, "bs-datepicker-navigation-view", never, { "calendar": { "alias": "calendar"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; }, never, never, true, never>;
 }

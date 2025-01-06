@@ -40,5 +40,5 @@ export declare class TabsetComponent implements OnDestroy {
     protected hasAvailableTabs(index: number): boolean;
     protected setClassMap(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TabsetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TabsetComponent, "tabset", never, { "vertical": { "alias": "vertical"; "required": false; }; "justified": { "alias": "justified"; "required": false; }; "type": { "alias": "type"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TabsetComponent, "tabset", never, { "vertical": { "alias": "vertical"; "required": false; }; "justified": { "alias": "justified"; "required": false; }; "type": { "alias": "type"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

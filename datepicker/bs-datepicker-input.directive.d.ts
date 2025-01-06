@@ -28,5 +28,5 @@ export declare class BsDatepickerInputDirective implements ControlValueAccessor,
     registerOnChange(fn: () => void): void;
     registerOnTouched(fn: () => void): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerInputDirective, [{ host: true; }, null, null, null, null]>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDatepickerInputDirective, "input[bsDatepicker]", never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDatepickerInputDirective, "input[bsDatepicker]", never, {}, {}, never, never, true, never>;
 }

@@ -13,5 +13,5 @@ export declare class AccordionComponent {
     addGroup(group: AccordionPanelComponent): void;
     removeGroup(group: AccordionPanelComponent): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AccordionComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AccordionComponent, "accordion", never, { "isAnimated": { "alias": "isAnimated"; "required": false; }; "closeOthers": { "alias": "closeOthers"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AccordionComponent, "accordion", never, { "isAnimated": { "alias": "isAnimated"; "required": false; }; "closeOthers": { "alias": "closeOthers"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

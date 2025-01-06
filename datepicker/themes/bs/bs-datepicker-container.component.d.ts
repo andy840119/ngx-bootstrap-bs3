@@ -37,5 +37,5 @@ export declare class BsDatepickerContainerComponent extends BsDatepickerAbstract
     clearDate(): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDatepickerContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerContainerComponent, "bs-datepicker-container", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDatepickerContainerComponent, "bs-datepicker-container", never, {}, {}, never, never, true, never>;
 }

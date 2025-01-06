@@ -33,5 +33,5 @@ export declare class AccordionPanelComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void;
     toggleOpen(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AccordionPanelComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AccordionPanelComponent, "accordion-group, accordion-panel", never, { "heading": { "alias": "heading"; "required": false; }; "panelClass": { "alias": "panelClass"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; "isOpen": { "alias": "isOpen"; "required": false; }; }, { "isOpenChange": "isOpenChange"; }, never, ["[accordion-heading]", "*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AccordionPanelComponent, "accordion-group, accordion-panel", never, { "heading": { "alias": "heading"; "required": false; }; "panelClass": { "alias": "panelClass"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; "isOpen": { "alias": "isOpen"; "required": false; }; }, { "isOpenChange": "isOpenChange"; }, never, ["[accordion-heading]", "*"], true, never>;
 }

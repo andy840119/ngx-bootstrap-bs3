@@ -158,5 +158,5 @@ export declare class FocusTrapDirective implements OnDestroy, AfterContentInit, 
     static ngAcceptInputType_enabled: BooleanInput;
     static ngAcceptInputType_autoCapture: BooleanInput;
     static ɵfac: i0.ɵɵFactoryDeclaration<FocusTrapDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FocusTrapDirective, "[focusTrap]", ["focusTrap"], { "enabled": { "alias": "cdkTrapFocus"; "required": false; }; "autoCapture": { "alias": "cdkTrapFocusAutoCapture"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FocusTrapDirective, "[focusTrap]", ["focusTrap"], { "enabled": { "alias": "cdkTrapFocus"; "required": false; }; "autoCapture": { "alias": "cdkTrapFocusAutoCapture"; "required": false; }; }, {}, never, never, true, never>;
 }

@@ -41,5 +41,5 @@ export declare class CollapseDirective implements AfterViewChecked {
     show(): void;
     animationRun(isAnimated: boolean, action: string): (callback: () => void) => void;
     static ɵfac: i0.ɵɵFactoryDeclaration<CollapseDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CollapseDirective, "[collapse]", ["bs-collapse"], { "display": { "alias": "display"; "required": false; }; "isAnimated": { "alias": "isAnimated"; "required": false; }; "collapse": { "alias": "collapse"; "required": false; }; }, { "collapsed": "collapsed"; "collapses": "collapses"; "expanded": "expanded"; "expands": "expands"; }, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CollapseDirective, "[collapse]", ["bs-collapse"], { "display": { "alias": "display"; "required": false; }; "isAnimated": { "alias": "isAnimated"; "required": false; }; "collapse": { "alias": "collapse"; "required": false; }; }, { "collapsed": "collapsed"; "collapses": "collapses"; "expanded": "expanded"; "expands": "expands"; }, never, never, true, never>;
 }

@@ -11,5 +11,5 @@ export declare class BsCustomDatesViewComponent {
     onSelect: EventEmitter<BsCustomDates>;
     selectFromRanges(range?: BsCustomDates): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsCustomDatesViewComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsCustomDatesViewComponent, "bs-custom-date-view", never, { "ranges": { "alias": "ranges"; "required": false; }; "selectedRange": { "alias": "selectedRange"; "required": false; }; "customRangeLabel": { "alias": "customRangeLabel"; "required": false; }; }, { "onSelect": "onSelect"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsCustomDatesViewComponent, "bs-custom-date-view", never, { "ranges": { "alias": "ranges"; "required": false; }; "selectedRange": { "alias": "selectedRange"; "required": false; }; "customRangeLabel": { "alias": "customRangeLabel"; "required": false; }; }, { "onSelect": "onSelect"; }, never, never, true, never>;
 }

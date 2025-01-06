@@ -23,5 +23,5 @@ export declare class ModalContainerComponent implements OnInit, OnDestroy {
     hide(): void;
     private _hide;
     static ɵfac: i0.ɵɵFactoryDeclaration<ModalContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ModalContainerComponent, "modal-container", never, {}, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ModalContainerComponent, "modal-container", never, {}, {}, never, ["*"], true, never>;
 }

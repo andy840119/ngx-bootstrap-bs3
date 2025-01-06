@@ -17,5 +17,5 @@ export declare class BsDropdownToggleDirective implements OnDestroy {
     onClick(event: MouseEvent): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDropdownToggleDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDropdownToggleDirective, "[bsDropdownToggle],[dropdownToggle]", ["bs-dropdown-toggle"], {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<BsDropdownToggleDirective, "[bsDropdownToggle],[dropdownToggle]", ["bs-dropdown-toggle"], {}, {}, never, never, true, never>;
 }

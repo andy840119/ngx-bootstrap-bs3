@@ -6,5 +6,5 @@ export declare class TabHeadingDirective {
     templateRef?: TemplateRef<any>;
     constructor(templateRef: TemplateRef<any>, tab: TabDirective);
     static ɵfac: i0.ɵɵFactoryDeclaration<TabHeadingDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<TabHeadingDirective, "[tabHeading]", never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<TabHeadingDirective, "[tabHeading]", never, {}, {}, never, never, true, never>;
 }

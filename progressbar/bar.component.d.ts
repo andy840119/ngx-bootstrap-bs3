@@ -21,5 +21,5 @@ export declare class BarComponent implements OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
     private applyTypeClasses;
     static ɵfac: i0.ɵɵFactoryDeclaration<BarComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BarComponent, "bar", never, { "max": { "alias": "max"; "required": false; }; "value": { "alias": "value"; "required": false; }; "animate": { "alias": "animate"; "required": false; }; "striped": { "alias": "striped"; "required": false; }; "type": { "alias": "type"; "required": false; }; }, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BarComponent, "bar", never, { "max": { "alias": "max"; "required": false; }; "value": { "alias": "value"; "required": false; }; "animate": { "alias": "animate"; "required": false; }; "striped": { "alias": "striped"; "required": false; }; "type": { "alias": "type"; "required": false; }; }, {}, never, ["*"], true, never>;
 }

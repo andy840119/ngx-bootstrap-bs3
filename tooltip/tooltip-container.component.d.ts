@@ -14,5 +14,5 @@ export declare class TooltipContainerComponent implements AfterViewInit {
     constructor(config: TooltipConfig);
     ngAfterViewInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TooltipContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TooltipContainerComponent, "bs-tooltip-container", never, {}, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TooltipContainerComponent, "bs-tooltip-container", never, {}, {}, never, ["*"], true, never>;
 }

@@ -86,5 +86,5 @@ export declare class ModalDirective implements OnDestroy, OnInit {
     protected resetScrollbar(): void;
     protected getScrollbarWidth(): number;
     static ɵfac: i0.ɵɵFactoryDeclaration<ModalDirective, [null, null, null, null, { optional: true; }]>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ModalDirective, "[bsModal]", ["bs-modal"], { "config": { "alias": "config"; "required": false; }; "closeInterceptor": { "alias": "closeInterceptor"; "required": false; }; }, { "onShow": "onShow"; "onShown": "onShown"; "onHide": "onHide"; "onHidden": "onHidden"; }, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ModalDirective, "[bsModal]", ["bs-modal"], { "config": { "alias": "config"; "required": false; }; "closeInterceptor": { "alias": "closeInterceptor"; "required": false; }; }, { "onShow": "onShow"; "onShown": "onShown"; "onHide": "onHide"; "onHidden": "onHidden"; }, never, never, true, never>;
 }

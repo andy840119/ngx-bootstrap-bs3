@@ -16,5 +16,5 @@ export declare class BsDropdownContainerComponent implements OnDestroy {
     _contains(el: Element): boolean;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDropdownContainerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDropdownContainerComponent, "bs-dropdown-container", never, {}, {}, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDropdownContainerComponent, "bs-dropdown-container", never, {}, {}, never, ["*"], true, never>;
 }

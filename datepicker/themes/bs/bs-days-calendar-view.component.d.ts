@@ -23,5 +23,5 @@ export declare class BsDaysCalendarViewComponent {
     weekHoverHandler(cell: WeekViewModel, isHovered: boolean): void;
     hoverDay(cell: DayViewModel, isHovered: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BsDaysCalendarViewComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<BsDaysCalendarViewComponent, "bs-days-calendar-view", never, { "calendar": { "alias": "calendar"; "required": false; }; "options": { "alias": "options"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; "onSelect": "onSelect"; "onHover": "onHover"; "onHoverWeek": "onHoverWeek"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<BsDaysCalendarViewComponent, "bs-days-calendar-view", never, { "calendar": { "alias": "calendar"; "required": false; }; "options": { "alias": "options"; "required": false; }; "isDisabled": { "alias": "isDisabled"; "required": false; }; }, { "onNavigate": "onNavigate"; "onViewMode": "onViewMode"; "onSelect": "onSelect"; "onHover": "onHover"; "onHoverWeek": "onHoverWeek"; }, never, never, true, never>;
 }

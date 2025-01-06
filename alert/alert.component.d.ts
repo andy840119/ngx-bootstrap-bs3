@@ -29,5 +29,5 @@ export declare class AlertComponent implements OnInit {
      */
     close(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlertComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AlertComponent, "alert,bs-alert", never, { "type": { "alias": "type"; "required": false; }; "dismissible": { "alias": "dismissible"; "required": false; }; "dismissOnTimeout": { "alias": "dismissOnTimeout"; "required": false; }; "isOpen": { "alias": "isOpen"; "required": false; }; }, { "onClose": "onClose"; "onClosed": "onClosed"; }, never, ["*"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AlertComponent, "alert,bs-alert", never, { "type": { "alias": "type"; "required": false; }; "dismissible": { "alias": "dismissible"; "required": false; }; "dismissOnTimeout": { "alias": "dismissOnTimeout"; "required": false; }; "isOpen": { "alias": "isOpen"; "required": false; }; }, { "onClose": "onClose"; "onClosed": "onClosed"; }, never, ["*"], true, never>;
 }

@@ -36,5 +36,5 @@ export declare class RatingComponent implements ControlValueAccessor, OnInit {
     rate(value: number): void;
     protected buildTemplateObjects(max: number): RatingResults[];
     static ɵfac: i0.ɵɵFactoryDeclaration<RatingComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<RatingComponent, "rating", never, { "max": { "alias": "max"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; "titles": { "alias": "titles"; "required": false; }; "customTemplate": { "alias": "customTemplate"; "required": false; }; }, { "onHover": "onHover"; "onLeave": "onLeave"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<RatingComponent, "rating", never, { "max": { "alias": "max"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; "titles": { "alias": "titles"; "required": false; }; "customTemplate": { "alias": "customTemplate"; "required": false; }; }, { "onHover": "onHover"; "onLeave": "onLeave"; }, never, never, true, never>;
 }

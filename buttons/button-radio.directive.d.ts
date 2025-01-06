@@ -47,5 +47,5 @@ export declare class ButtonRadioDirective implements ControlValueAccessor, OnCha
     registerOnTouched(fn: () => void): void;
     setDisabledState(disabled: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ButtonRadioDirective, [null, null, null, { optional: true; }]>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonRadioDirective, "[btnRadio]", never, { "btnRadio": { "alias": "btnRadio"; "required": false; }; "uncheckable": { "alias": "uncheckable"; "required": false; }; "value": { "alias": "value"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ButtonRadioDirective, "[btnRadio]", never, { "btnRadio": { "alias": "btnRadio"; "required": false; }; "uncheckable": { "alias": "uncheckable"; "required": false; }; "value": { "alias": "value"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, true, never>;
 }
