@@ -3,6 +3,8 @@ import {
 } from '@angular/core';
 import { isBs3 } from 'ngx-bootstrap/utils';
 import { AccordionComponent } from './accordion.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { NgClass, NgIf } from '@angular/common';
 
 /**
  * ### Accordion heading
@@ -11,14 +13,16 @@ import { AccordionComponent } from './accordion.component';
  * will be used as group's header template.
  */
 @Component({
-  selector: 'accordion-group, accordion-panel',
-  templateUrl: './accordion-group.component.html',
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    class: 'panel',
-    style: 'display: block'
-  },
-  styleUrls: ['./accordion.scss']
+    selector: 'accordion-group, accordion-panel',
+    templateUrl: './accordion-group.component.html',
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+        class: 'panel',
+        style: 'display: block'
+    },
+    styleUrls: ['./accordion.scss'],
+    standalone: true,
+    imports: [NgClass, NgIf, CollapseModule]
 })
 export class AccordionPanelComponent implements OnInit, OnDestroy {
   /** turn on/off animation */

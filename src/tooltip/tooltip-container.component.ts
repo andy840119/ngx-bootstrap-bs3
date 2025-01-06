@@ -8,18 +8,18 @@ import { getBsVer, IBsVersion } from 'ngx-bootstrap/utils';
 import { PlacementForBs5 } from 'ngx-bootstrap/positioning';
 
 @Component({
-  selector: 'bs-tooltip-container',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  // eslint-disable-next-line @angular-eslint/no-host-metadata-property
-  host: {
-    '[class]':
-      '"tooltip in tooltip-" + placement + " " + "bs-tooltip-" + placement + " " + placement + " " + containerClass',
-    '[class.show]': '!_bsVersions.isBs3',
-    '[class.bs3]': '_bsVersions.isBs3',
-    '[attr.id]': 'this.id',
-    role: 'tooltip'
-  },
-  styles: [
+    selector: 'bs-tooltip-container',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    // eslint-disable-next-line @angular-eslint/no-host-metadata-property
+    host: {
+      '[class]':
+        '"tooltip in tooltip-" + placement + " " + "bs-tooltip-" + placement + " " + placement + " " + containerClass',
+      '[class.show]': '!_bsVersions.isBs3',
+      '[class.bs3]': '_bsVersions.isBs3',
+      '[attr.id]': 'this.id',
+      role: 'tooltip'
+    },
+    styles: [
     `
     :host.tooltip {
       display: block;
@@ -31,11 +31,12 @@ import { PlacementForBs5 } from 'ngx-bootstrap/positioning';
       position: absolute;
     }
   `
-  ],
-  template: `
+    ],
+    template: `
     <div class="tooltip-arrow arrow"></div>
     <div class="tooltip-inner"><ng-content></ng-content></div>
-    `
+    `,
+    standalone: true
 })
 export class TooltipContainerComponent implements AfterViewInit {
   classMap?: { [key: string]: boolean };
